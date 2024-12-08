@@ -4,7 +4,7 @@
             "outputFile": "com.example.task_track_app-mergeDebugResources-9:/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/parrophinssolutions/Documents/GitHub/task_track_app/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
