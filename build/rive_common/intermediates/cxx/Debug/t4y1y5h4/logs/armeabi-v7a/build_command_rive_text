@@ -1,0 +1,4 @@
+/Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/ninja \
+  -C \
+  /Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/armeabi-v7a \
+  rive_text

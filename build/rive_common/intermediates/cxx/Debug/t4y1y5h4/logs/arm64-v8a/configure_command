@@ -1,0 +1,17 @@
+/Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/cmake \
+  -H/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android \
+  -DCMAKE_SYSTEM_NAME=Android \
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -DCMAKE_SYSTEM_VERSION=19 \
+  -DANDROID_PLATFORM=android-19 \
+  -DANDROID_ABI=arm64-v8a \
+  -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
+  -DANDROID_NDK=/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393 \
+  -DCMAKE_ANDROID_NDK=/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393 \
+  -DCMAKE_TOOLCHAIN_FILE=/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake \
+  -DCMAKE_MAKE_PROGRAM=/Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/ninja \
+  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/arm64-v8a \
+  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/arm64-v8a \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -B/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/arm64-v8a \
+  -GNinja

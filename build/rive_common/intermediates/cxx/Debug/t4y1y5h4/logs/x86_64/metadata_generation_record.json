@@ -1,0 +1,184 @@
+[
+  {
+    "level_": 0,
+    "message_": "Start JSON generation. Platform version: 19 min SDK version: x86_64",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1617196928
+  },
+  {
+    "level_": 0,
+    "message_": "rebuilding JSON /Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64/android_gradle_build.json due to:",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 2082306866
+  },
+  {
+    "level_": 0,
+    "message_": "- expected json /Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64/android_gradle_build.json file is not present, will remove stale json folder",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 64932698
+  },
+  {
+    "level_": 0,
+    "message_": "- missing previous command file /Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64/metadata_generation_command.txt, will remove stale json folder",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 168833720
+  },
+  {
+    "level_": 0,
+    "message_": "- command changed from previous, will remove stale json folder",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1231350386
+  },
+  {
+    "level_": 0,
+    "message_": "removing stale contents from \u0027/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64\u0027",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 67177715
+  },
+  {
+    "level_": 0,
+    "message_": "created folder \u0027/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64\u0027",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1863076609
+  },
+  {
+    "level_": 0,
+    "message_": "executing cmake /Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/cmake \\\n  -H/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d19 \\\n  -DANDROID_PLATFORM\u003dandroid-19 \\\n  -DANDROID_ABI\u003dx86_64 \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003dx86_64 \\\n  -DANDROID_NDK\u003d/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393 \\\n  -DCMAKE_ANDROID_NDK\u003d/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/ninja \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/x86_64 \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/x86_64 \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64 \\\n  -GNinja\n",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -829430318
+  },
+  {
+    "level_": 0,
+    "message_": "/Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/cmake \\\n  -H/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d19 \\\n  -DANDROID_PLATFORM\u003dandroid-19 \\\n  -DANDROID_ABI\u003dx86_64 \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003dx86_64 \\\n  -DANDROID_NDK\u003d/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393 \\\n  -DCMAKE_ANDROID_NDK\u003d/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/Users/parrophinssolutions/Library/Android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/Users/parrophinssolutions/Library/Android/sdk/cmake/3.18.1/bin/ninja \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/x86_64 \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/x86_64 \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64 \\\n  -GNinja\n",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 962926417
+  },
+  {
+    "level_": 0,
+    "message_": "Exiting generation of /Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64/compile_commands.json.bin normally",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1510246724
+  },
+  {
+    "level_": 0,
+    "message_": "done executing cmake",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1543696637
+  },
+  {
+    "level_": 0,
+    "message_": "write command file /Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/x86_64/metadata_generation_command.txt",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1608862426
+  },
+  {
+    "level_": 0,
+    "message_": "JSON generation completed without problems",
+    "file_": "/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/CMakeLists.txt",
+    "tag_": "debug|x86_64",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 394376447
+  }
+]

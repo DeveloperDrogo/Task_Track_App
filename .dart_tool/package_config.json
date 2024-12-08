@@ -2,10 +2,34 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "adaptive_theme",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/adaptive_theme-3.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "archive",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/archive-3.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "async",
       "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "awesome_dialog",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/awesome_dialog-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "bloc",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/bloc-8.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "boolean_selector",
@@ -42,6 +66,12 @@
       "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "day_night_time_picker",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/day_night_time_picker-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "dio",
@@ -86,6 +116,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_bloc",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3",
       "packageUri": "lib/",
@@ -100,6 +136,30 @@
     {
       "name": "flutter_web_plugins",
       "rootUri": "file:///Users/parrophinssolutions/development/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "fpdart",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/fpdart-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "google_fonts",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/google_fonts-6.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "graphs",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/graphs-2.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/http-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -122,6 +182,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "lottie",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/lottie-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/matcher-0.12.16",
       "packageUri": "lib/",
@@ -140,10 +206,34 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/path_provider-2.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/path_provider_android-2.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "path_provider_linux",
@@ -174,6 +264,24 @@
       "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/provider-6.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "rive",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive-0.13.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "rive_common",
+      "rootUri": "file:///Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "shared_preferences",
@@ -308,7 +416,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-12-08T14:33:59.676539Z",
+  "generated": "2024-12-08T14:59:09.700748Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
