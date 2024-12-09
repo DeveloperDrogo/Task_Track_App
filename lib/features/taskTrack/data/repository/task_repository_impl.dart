@@ -3,6 +3,7 @@ import 'package:task_track_app/core/error/exception.dart';
 import 'package:task_track_app/core/error/failure.dart';
 import 'package:task_track_app/features/taskTrack/data/datasource/task_remote_data_source.dart';
 import 'package:task_track_app/features/taskTrack/domain/entities/label_data.dart';
+import 'package:task_track_app/features/taskTrack/domain/entities/task_data.dart';
 import 'package:task_track_app/features/taskTrack/domain/repository/task_repository.dart';
 
 class TaskRepositoryImpl implements TaskRepository {
@@ -36,6 +37,36 @@ class TaskRepositoryImpl implements TaskRepository {
       return right(result);
     } on ServerException catch (e) {
       return left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TaskData>>> getAllTask() async {
+    try {
+      final result = await taskRemoteDataSource.getAllTask();
+      return right(result);
+    } on ServerException catch (e) {
+      return left(
+        Failure(
+          e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> moveTask(
+      {required String taskId, required String projectId}) async {
+    try {
+      final result = await taskRemoteDataSource.moveTask(
+          taskId: taskId, projectId: projectId);
+      return right(result);
+    } on ServerException catch (e) {
+      return left(
+        Failure(
+          e.toString(),
+        ),
+      );
     }
   }
 }

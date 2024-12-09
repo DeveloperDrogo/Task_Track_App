@@ -9,7 +9,7 @@ sealed class TaskActionState extends TaskState {}
 
 final class TaskLoadState extends TaskState {}
 
-final class TaskActionLoadeState extends TaskState {}
+final class TaskActionLoadeState extends TaskActionState {}
 
 final class TaskInitial extends TaskState {}
 
@@ -38,3 +38,10 @@ final class TaskSuccessActionState extends TaskActionState {
 }
 
 final class TaskFailedActionState extends TaskActionState {}
+
+final class GetAllTaskState extends TaskState{
+  final List<TaskData> taskData;
+  GetAllTaskState({required this.taskData});
+}
+
+final class MoveTaskSuccessState extends TaskActionState{}

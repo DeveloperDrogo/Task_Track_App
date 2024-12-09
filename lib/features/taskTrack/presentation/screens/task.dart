@@ -1,15 +1,17 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
-import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
+import 'package:task_track_app/core/utils/show_snackbar.dart';
+import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/add_task.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/app_bar_title.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/badge.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/date_time_line.dart';
+import 'package:task_track_app/features/taskTrack/presentation/widgets/my_task_list.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/task_search_filter.dart';
-import 'package:task_track_app/notification_service.dart';
 
 class TaskTrackPage extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -22,65 +24,9 @@ class TaskTrackPage extends StatefulWidget {
 }
 
 class _TaskTrackPageState extends State<TaskTrackPage> {
-
-  Future<void> scheduleNotifications() async {
-    final prefs = await SharedPreferences.getInstance();
-    List<String> tasks = prefs.getStringList('tasks') ?? [];
-
-    print(tasks);
-
-    for (int i = 0; i < tasks.length; i++) {
-      // Split the stored string to get task details
-      List<String> taskDetails = tasks[i].split('|');
-      String taskName = taskDetails[0];
-      String scheduleDateTimeStr = taskDetails[1];
-
-      // Parse the string to DateTime
-      DateTime scheduleDateTime =
-          DateFormat("yyyy-MM-dd HH:mm").parse(scheduleDateTimeStr);
-
-      // Get the current time
-      DateTime currentTime = DateTime.now();
-
-      // Calculate the difference in seconds
-      Duration difference = scheduleDateTime.difference(currentTime);
-    print(difference);
-
-      // If the target time is in the past, handle this scenario
-      if (difference.isNegative) {
-
-        // Remove this task from SharedPreferences
-        tasks.removeAt(i);
-
-        // Store the updated list back in SharedPreferences
-        await prefs.setStringList('tasks', tasks);
-
-        // Adjust the index to avoid skipping a task due to list modification
-        i--;
-
-        continue; // Skip scheduling this notification
-      }
-
-      // Calculate the interval
-      int interval = difference.inSeconds;
-      if (interval < 5) {
-        interval = 5;
-      }
-
-      // Schedule the notification
-      await NotificationService.showNotification(
-        title: "Task Reminder",
-        body:
-            "Your task $taskName is scheduled at $scheduleDateTimeStr as a reminder.",
-        scheduled: true,
-        interval: interval,
-      );
-    }
-  }
-
   @override
   void initState() {
-    scheduleNotifications();
+    context.read<TaskBloc>().add(GetAllTaskEvent());
     super.initState();
   }
 
@@ -184,98 +130,97 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0).copyWith(top: 10),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 6,
-                  child: TaskSearchFilter(
-                    searchController: _searchController,
-                    onclear: () {
-                      setState(() {
-                        _searchController.clear();
-                      });
-                    },
-                    onChanged: (value) {
-                      setState(() {});
-                    },
+      body: BlocConsumer<TaskBloc, TaskState>(
+        listenWhen: (previous, current) => current is TaskActionState,
+        buildWhen: (previous, current) => current is! TaskActionState,
+        listener: (context, state) {
+          if (state is TaskErrorState) {
+            showSnackBar(context, state.errorMessage);
+          }else if (state is MoveTaskSuccessState) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              TaskTrackPage.route(),
+              (route) => false,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is TaskLoadState) {
+            return const Loader();
+          } else if (state is GetAllTaskState) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0).copyWith(top: 10),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 6,
+                        child: TaskSearchFilter(
+                          searchController: _searchController,
+                          onclear: () {
+                            setState(() {
+                              _searchController.clear();
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            border: Border.all(width: 0.5, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
+                            // color: Theme.of(context).cardTheme.color,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 0, bottom: 0),
+                            child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  IconlyBroken.filter,
+                                  size: 25,
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(width: 5),
-                Expanded(
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 0.5, color: Colors.grey),
-                      borderRadius: BorderRadius.circular(10),
-                      // color: Theme.of(context).cardTheme.color,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 0, bottom: 0),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            IconlyBroken.filter,
-                            size: 25,
-                          )),
-                    ),
+                  const SizedBox(
+                    height: 6,
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 6,
-            ),
-            //date selection using DateTimelinePicker
-            TaskDateTimeLine(onDateChange: (date) {}),
+                  //date selection using DateTimelinePicker
+                  TaskDateTimeLine(onDateChange: (date) {}),
 
-            const SizedBox(
-              height: 16,
-            ),
+                  const SizedBox(
+                    height: 16,
+                  ),
 
-            // Row(
-            //   children: [
-            //     SingleChildScrollView(
-            //       scrollDirection: Axis.horizontal,
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.start,
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: ['To do', 'On progress', 'Completed']
-            //             .map(
-            //               (e) => Padding(
-            //                 padding: const EdgeInsets.only(
-            //                     top: 0, bottom: 0, right: 10),
-            //                 child: GestureDetector(
-            //                   onTap: () {
-            //                     setState(() {
-            //                       // Set the selected topic
-            //                       selectedTopic = selectedTopic == e ? null : e;
-            //                     });
-            //                   },
-            //                   child: Chip(
-            //                     label: Text(e,style: TextStyle(color: selectedTopic == e?Colors.white:null),),
-            //                     backgroundColor: selectedTopic == e
-            //                         ? AdaptiveTheme.of(context).mode.isDark?AppPallete.primaryDarkColor:AppPallete.primaryColor
-            //                         : null,
-            //                     side: selectedTopic == e
-            //                         ? null
-            //                         : const BorderSide(
-            //                             width: 0.2,
-            //                             color: Color.fromARGB(255, 239, 239, 239)),
-            //                   ),
-            //                 ),
-            //               ),
-            //             )
-            //             .toList(),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-          ],
-        ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: state.taskData.length,
+                      itemBuilder: (context, index) {
+                        return MyTaskList(
+                          taskData: state.taskData[index],
+                          onCancellPress: (p0) {},
+                          onMoveTaskPress: (taskId, projectId) {
+                            context.read<TaskBloc>().add(MoveTaskEvent(
+                                taskId: taskId, projectId: projectId));
+                          },
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+            );
+          }
+          return const SizedBox();
+        },
       ),
     );
   }

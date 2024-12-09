@@ -14,13 +14,21 @@ final class AddTaskEvent extends TaskEvent {
   final String scheduleDate;
   final Time scheduleTime;
 
-  AddTaskEvent({
-    required this.taskName,
-    required this.des,
-    required this.dueDate,
-    required this.priority,
-    required this.labels,
-    required this.scheduleDate,
-    required this.scheduleTime
-  });
+  AddTaskEvent(
+      {required this.taskName,
+      required this.des,
+      required this.dueDate,
+      required this.priority,
+      required this.labels,
+      required this.scheduleDate,
+      required this.scheduleTime});
+}
+
+final class GetAllTaskEvent extends TaskEvent {}
+
+final class MoveTaskEvent extends TaskEvent {
+  final String taskId;
+  final String projectId;
+
+  MoveTaskEvent({required this.taskId, required this.projectId});
 }

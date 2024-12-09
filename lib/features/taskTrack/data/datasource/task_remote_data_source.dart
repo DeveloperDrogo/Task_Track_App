@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:task_track_app/core/error/exception.dart';
 import 'package:task_track_app/features/taskTrack/data/model/label_model.dart';
+import 'package:task_track_app/features/taskTrack/data/model/task_model.dart';
+import 'package:uuid/uuid.dart';
 
 abstract interface class TaskRemoteDataSource {
   Future<List<LabelsModel>> getAllLabels();
@@ -11,6 +13,8 @@ abstract interface class TaskRemoteDataSource {
     required String priority,
     required List labels,
   });
+  Future<List<TaskModel>> getAllTask();
+  Future<bool> moveTask({required String taskId, required String projectId});
 }
 
 class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
@@ -75,6 +79,73 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
           "priority": priority,
           "project_id": "2344765751",
           "due_string": dueDate,
+        },
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<TaskModel>> getAllTask() async {
+    try {
+      List<TaskModel> posts = [];
+      final response = await dio.get(
+        '${restApiUrl}tasks',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $apiToken',
+          },
+        ),
+      );
+
+
+      // Correctly decode the response as a list of maps
+      List<Map<String, dynamic>> result =
+          List<Map<String, dynamic>>.from(response.data);
+
+      // Sort the result based on created_at in descending order
+      result.sort((a, b) {
+        DateTime dateA = DateTime.parse(a['created_at']);
+        DateTime dateB = DateTime.parse(b['created_at']);
+        return dateB.compareTo(dateA); // Descending order
+      });
+
+      // Convert each map to a TaskModel
+      for (Map<String, dynamic> map in result) {
+        TaskModel post = TaskModel.fromMap(map);
+        posts.add(post);
+      }
+      return posts;
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<bool> moveTask(
+      {required String taskId, required String projectId}) async {
+    try {
+      final response = await dio.post(
+        '${syncApiUrl}sync',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $apiToken',
+          },
+        ),
+        data: {
+          "commands": [
+            {
+              "type": "item_move",
+              "args": {"id": taskId, "project_id": projectId},
+              "uuid": const Uuid().v4(),
+            },
+          ],
         },
       );
       if (response.statusCode == 200) {

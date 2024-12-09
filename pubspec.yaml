@@ -55,6 +55,7 @@ dependencies:
   get_it: ^7.6.7
   flutter_dotenv: ^5.2.1
   awesome_notifications: ^0.8.2
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:

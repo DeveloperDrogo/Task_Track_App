@@ -6,6 +6,8 @@ import 'package:task_track_app/features/taskTrack/data/datasource/task_remote_da
 import 'package:task_track_app/features/taskTrack/data/repository/task_repository_impl.dart';
 import 'package:task_track_app/features/taskTrack/domain/repository/task_repository.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_labels_use_case.dart';
+import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_task_use_case.dart';
+import 'package:task_track_app/features/taskTrack/domain/usecase/move_task_use_case.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'features/taskTrack/domain/usecase/add_task_use_case.dart';
 
@@ -69,9 +71,23 @@ void _initTask() {
     ),
   );
 
+  serviceLocator.registerFactory(
+    () => GetAllTaskUseCase(
+      taskRepository: serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => MoveTaskUseCase(
+      taskRepository: serviceLocator(),
+    ),
+  );
+
   //bloc
   serviceLocator.registerFactory(
     () => TaskBloc(
+      moveTaskUseCase: serviceLocator(),
+      getAllTaskUseCase: serviceLocator(),
       getAllLabelsUseCase: serviceLocator(),
       addTaskUseCase: serviceLocator()
     ),

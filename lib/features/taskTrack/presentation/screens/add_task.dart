@@ -7,8 +7,11 @@ import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
+import 'package:task_track_app/core/constant/constant.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
 import 'package:task_track_app/core/utils/merge_date_time.dart';
+import 'package:task_track_app/core/utils/show_dialog.dart';
+import 'package:task_track_app/core/utils/show_loading_dialog.dart';
 import 'package:task_track_app/core/utils/show_snackbar.dart';
 import 'package:task_track_app/features/taskTrack/domain/entities/label_data.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
@@ -19,6 +22,7 @@ import 'package:task_track_app/features/taskTrack/presentation/widgets/submit_bu
 import 'package:task_track_app/features/taskTrack/presentation/widgets/task_dropDown.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/task_time_filed.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/text_form_field.dart';
+import '../utils/notification_manager.dart';
 
 class AddTaskPage extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -115,9 +119,63 @@ class _AddTaskPageState extends State<AddTaskPage> {
         listener: (context, state) {
           if (state is TaskErrorState) {
             showSnackBar(context, state.errorMessage);
+          } else if (state is TaskActionLoadeState) {
+            LoadingDialog.show(context);
           } else if (state is TaskSuccessActionState) {
-             storeTask(state.taskName, state.scheduleDate, state.sheduleTime);
-          } else if (state is TaskFailedActionState) {}
+            showAwesomeDialog(
+              context: context,
+              type: Constant.success,
+              title: 'Success',
+              desc: 'You have successfully added the Task.',
+              successButtonText: 'Okay',
+              failedButtonText: 'Close',
+              okButtonPress: () {
+                NotificationManager.scheduleNotifications(
+                    mergeDateTime(state.scheduleDate, state.sheduleTime),
+                    state.taskName);
+
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  TaskTrackPage.route(),
+                  (route) => false,
+                );
+              },
+              cancelButtonPress: () {
+                NotificationManager.scheduleNotifications(
+                    mergeDateTime(state.scheduleDate, state.sheduleTime),
+                    state.taskName);
+
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  TaskTrackPage.route(),
+                  (route) => false,
+                );
+              },
+            );
+          } else if (state is TaskFailedActionState) {
+            showAwesomeDialog(
+              context: context,
+              type: Constant.failure,
+              title: 'Failure',
+              desc: 'Adding task failed. Please try again.',
+              successButtonText: 'Okay',
+              failedButtonText: 'Close',
+              okButtonPress: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  TaskTrackPage.route(),
+                  (route) => false,
+                );
+              },
+              cancelButtonPress: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  TaskTrackPage.route(),
+                  (route) => false,
+                );
+              },
+            );
+          } 
         },
         builder: (context, state) {
           if (state is TaskLoadState) {
