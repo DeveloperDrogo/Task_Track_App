@@ -16,6 +16,7 @@ class TaskTextFormField extends StatelessWidget {
   final bool readOnly; // New parameter for read-only
   final int minLines;
   final int maxLines;
+  final bool validateRequired;
 
   const TaskTextFormField(
       {Key? key,
@@ -29,6 +30,7 @@ class TaskTextFormField extends StatelessWidget {
       this.maxLength,
       this.readOnly = false,
       required this.minLines,
+      this.validateRequired=false,
       required this.maxLines // Default is false (editable)
       })
       : super(key: key);
@@ -77,6 +79,7 @@ class TaskTextFormField extends StatelessWidget {
                 : null, // Hides the character count if maxLength is not provided
           ),
           validator: (value) {
+            if (!validateRequired) return null; // Skip validation if not required
             if (value == null || value.isEmpty) {
               return "$label is missing";
             }

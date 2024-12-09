@@ -17,4 +17,25 @@ class TaskRepositoryImpl implements TaskRepository {
       return left(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> addTask(
+      {required String taskName,
+      required String des,
+      required String dueDate,
+      required String priority,
+      required List labels}) async {
+    try {
+      final result = await taskRemoteDataSource.addTask(
+        taskName: taskName,
+        des: des,
+        dueDate: dueDate,
+        priority: priority,
+        labels: labels,
+      );
+      return right(result);
+    } on ServerException catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
 }

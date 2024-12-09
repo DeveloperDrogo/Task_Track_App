@@ -7,6 +7,7 @@ import 'package:task_track_app/features/taskTrack/data/repository/task_repositor
 import 'package:task_track_app/features/taskTrack/domain/repository/task_repository.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_labels_use_case.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
+import 'features/taskTrack/domain/usecase/add_task_use_case.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -31,17 +32,20 @@ Future<void> initDependencies() async {
     serviceLocator.registerLazySingleton<String>(() => restApiUrl,
         instanceName: 'restApiUrl');
   }
-
 }
 
 void _initTask() {
   //dataSource
   serviceLocator.registerFactory<TaskRemoteDataSource>(
     () => TaskRemoteDataSourceImpl(
-      dio: serviceLocator<Dio>(),  // Fetch Dio instance from serviceLocator
-      apiToken: serviceLocator<String>(),  // Fetch apiToken from serviceLocator
-      restApiUrl: serviceLocator<String>(instanceName: 'restApiUrl'),  // Fetch restApiUrl from serviceLocator with instanceName
-      syncApiUrl: serviceLocator<String>(instanceName: 'syncApiUrl'),  // Fetch syncApiUrl from serviceLocator with instanceName
+      dio: serviceLocator<Dio>(), // Fetch Dio instance from serviceLocator
+      apiToken: serviceLocator<String>(), // Fetch apiToken from serviceLocator
+      restApiUrl: serviceLocator<String>(
+          instanceName:
+              'restApiUrl'), // Fetch restApiUrl from serviceLocator with instanceName
+      syncApiUrl: serviceLocator<String>(
+          instanceName:
+              'syncApiUrl'), // Fetch syncApiUrl from serviceLocator with instanceName
     ),
   );
 
@@ -54,11 +58,22 @@ void _initTask() {
 
   //usecase
   serviceLocator.registerFactory(
-    () => GetAllLabelsUseCase(taskRepository: serviceLocator()),
+    () => GetAllLabelsUseCase(
+      taskRepository: serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => AddTaskUseCase(
+      taskRepository: serviceLocator(),
+    ),
   );
 
   //bloc
   serviceLocator.registerFactory(
-    () => TaskBloc(getAllLabelsUseCase: serviceLocator()),
+    () => TaskBloc(
+      getAllLabelsUseCase: serviceLocator(),
+      addTaskUseCase: serviceLocator()
+    ),
   );
 }

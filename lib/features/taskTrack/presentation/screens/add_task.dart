@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
+import 'package:task_track_app/core/utils/merge_date_time.dart';
 import 'package:task_track_app/core/utils/show_snackbar.dart';
 import 'package:task_track_app/features/taskTrack/domain/entities/label_data.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
@@ -14,7 +16,7 @@ import 'package:task_track_app/features/taskTrack/presentation/screens/task.dart
 import 'package:task_track_app/features/taskTrack/presentation/widgets/date_picker.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/multi_drop_down_field.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/submit_button.dart';
-import 'package:task_track_app/features/taskTrack/presentation/widgets/task-dropDown.dart';
+import 'package:task_track_app/features/taskTrack/presentation/widgets/task_dropDown.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/task_time_filed.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/text_form_field.dart';
 
@@ -33,13 +35,30 @@ class _AddTaskPageState extends State<AddTaskPage> {
   final _title = TextEditingController();
   final _desc = TextEditingController();
   String? priority;
-  String? label;
+  String? priorityName;
+  String? dueDate;
+  List labelValue = [];
+  String? scheduleDate;
+  Time? scheduleTime;
   final DateFormat format = DateFormat("hh:mm a"); // Use AM/PM format
-  Time? _remainderTime;
+
+  void storeTask(String taskName, String date, Time time) async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> tasks = prefs.getStringList('tasks') ?? [];
+
+    // Create a new task
+    String task = '$taskName|${mergeDateTime(date, time)}';
+
+    // Add the task to the list
+    tasks.add(task);
+
+    // Store the list in SharedPreferences
+    await prefs.setStringList('tasks', tasks);
+  }
 
   void _onInTimeChanged(Time newTime) {
     setState(() {
-      _remainderTime = newTime; // Update the selected time
+      scheduleTime = newTime; // Update the selected time
     });
   }
 
@@ -54,13 +73,25 @@ class _AddTaskPageState extends State<AddTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar:  Padding(
+      bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: SubmitButton(onpressed: () {
-          if(_formKey.currentState!.validate()){
-
-          }
-        }, buttonText: "Add Task"),
+        child: SubmitButton(
+            onpressed: () {
+              if (_formKey.currentState!.validate()) {
+                context.read<TaskBloc>().add(
+                      AddTaskEvent(
+                        taskName: _title.text,
+                        des: _desc.text,
+                        dueDate: dueDate!,
+                        priority: priority!,
+                        labels: labelValue,
+                        scheduleDate: scheduleDate!,
+                        scheduleTime: scheduleTime!,
+                      ),
+                    );
+              }
+            },
+            buttonText: "Add Task"),
       ),
       appBar: AppBar(
         title: Text(
@@ -84,7 +115,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
         listener: (context, state) {
           if (state is TaskErrorState) {
             showSnackBar(context, state.errorMessage);
-          }
+          } else if (state is TaskSuccessActionState) {
+             storeTask(state.taskName, state.scheduleDate, state.sheduleTime);
+          } else if (state is TaskFailedActionState) {}
         },
         builder: (context, state) {
           if (state is TaskLoadState) {
@@ -99,7 +132,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 value: labelData, // The actual LabelsData object
               );
             }).toList();
-            
+
             return SingleChildScrollView(
               child: Form(
                 key: _formKey,
@@ -108,6 +141,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   child: Column(
                     children: [
                       TaskTextFormField(
+                        validateRequired: true,
                         label: 'Task Name',
                         hintText: 'Enter Task Name',
                         controller: _title,
@@ -119,6 +153,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 16,
                       ),
                       TaskTextFormField(
+                        validateRequired: false,
                         label: 'Description',
                         hintText: 'Enter Description',
                         controller: _desc,
@@ -130,12 +165,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 16,
                       ),
                       TaskDatePicker(
-                        validatorRequired:true,
+                        validatorRequired: true,
                         label: 'Due Date',
                         hintText: 'Enter Due Date',
-                        onDateSelected: (p0) {
+                        onDateSelected: (date) {
                           setState(() {
                             FocusScope.of(context).requestFocus(FocusNode());
+                            dueDate = DateFormat('yyyy-MM-dd').format(date);
                           });
                         },
                       ),
@@ -143,10 +179,19 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 16,
                       ),
                       TaskDropDownField(
-                          selectedValue: priority,
+                          selectedValue: priorityName,
                           icon: const Icon(Icons.flag_outlined),
                           onChanged: (value) {
-                            priority = value;
+                            priorityName = value;
+                            if (value == 'Urgent') {
+                              priority = '4';
+                            } else if (value == 'Important') {
+                              priority = '3';
+                            } else if (value == 'Medium') {
+                              priority = '2';
+                            } else if (value == 'Low') {
+                              priority = '1';
+                            }
                           },
                           label: 'Priority',
                           dropdownValues: const [
@@ -158,11 +203,17 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       const SizedBox(
                         height: 16,
                       ),
-                     TaskMultiDropDownField(controller: controller, items: items, onChanged:(values) {
-                       setState(() {
-                        //  print('values $values');
-                       });
-                     },),
+                      TaskMultiDropDownField(
+                        controller: controller,
+                        items: items,
+                        onChanged: (values) {
+                          setState(() {
+                            final labelNames =
+                                values.map((e) => e.labelName).toList();
+                            labelValue = labelNames;
+                          });
+                        },
+                      ),
                       const SizedBox(
                         height: 16,
                       ),
@@ -204,10 +255,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
                                 child: TaskDatePicker(
                                   label: 'Date',
                                   hintText: 'Select Date',
-                                  onDateSelected: (p0) {
+                                  onDateSelected: (date) {
                                     setState(() {
                                       FocusScope.of(context)
                                           .requestFocus(FocusNode());
+                                      scheduleDate =
+                                          DateFormat('yyyy-MM-dd').format(date);
+                                      print(scheduleDate);
                                     });
                                   },
                                 ),
@@ -217,11 +271,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
                                     left: 16,
                                     right: 16,
                                     top: 6,
-                                    bottom: _remainderTime != null ? null : 28),
+                                    bottom: scheduleTime != null ? null : 28),
                                 child: TimePickerWidget(
                                   is12Hour: true,
                                   label: 'Time',
-                                  time: _remainderTime,
+                                  time: scheduleTime,
                                   onTimeChanged: _onInTimeChanged,
                                   format: format,
                                   defaultText:
@@ -235,7 +289,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       const SizedBox(
                         height: 16,
                       ),
-                     
                     ],
                   ),
                 ),

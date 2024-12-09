@@ -1,10 +1,29 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.task_track_app-mergeDebugResources-9:/values-v16/values-v16.xml",
+            "outputFile": "com.example.task_track_app-mergeDebugResources-41:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/parrophinssolutions/.gradle/caches/transforms-3/7e9df2ac2213a6bd3cef0f2f27870d79/transformed/core-1.6.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/parrophinssolutions/.gradle/caches/transforms-3/5e1ab9db4bfbf3ac403646091b989b87/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

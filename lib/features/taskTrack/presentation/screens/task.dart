@@ -1,15 +1,20 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/add_task.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/app_bar_title.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/badge.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/date_time_line.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/task_search_filter.dart';
+import 'package:task_track_app/notification_service.dart';
 
 class TaskTrackPage extends StatefulWidget {
-  static route()=>MaterialPageRoute(builder:(context) => const TaskTrackPage(),);
+  static route() => MaterialPageRoute(
+        builder: (context) => const TaskTrackPage(),
+      );
   const TaskTrackPage({super.key});
 
   @override
@@ -17,6 +22,68 @@ class TaskTrackPage extends StatefulWidget {
 }
 
 class _TaskTrackPageState extends State<TaskTrackPage> {
+
+  Future<void> scheduleNotifications() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> tasks = prefs.getStringList('tasks') ?? [];
+
+    print(tasks);
+
+    for (int i = 0; i < tasks.length; i++) {
+      // Split the stored string to get task details
+      List<String> taskDetails = tasks[i].split('|');
+      String taskName = taskDetails[0];
+      String scheduleDateTimeStr = taskDetails[1];
+
+      // Parse the string to DateTime
+      DateTime scheduleDateTime =
+          DateFormat("yyyy-MM-dd HH:mm").parse(scheduleDateTimeStr);
+
+      // Get the current time
+      DateTime currentTime = DateTime.now();
+
+      // Calculate the difference in seconds
+      Duration difference = scheduleDateTime.difference(currentTime);
+    print(difference);
+
+      // If the target time is in the past, handle this scenario
+      if (difference.isNegative) {
+
+        // Remove this task from SharedPreferences
+        tasks.removeAt(i);
+
+        // Store the updated list back in SharedPreferences
+        await prefs.setStringList('tasks', tasks);
+
+        // Adjust the index to avoid skipping a task due to list modification
+        i--;
+
+        continue; // Skip scheduling this notification
+      }
+
+      // Calculate the interval
+      int interval = difference.inSeconds;
+      if (interval < 5) {
+        interval = 5;
+      }
+
+      // Schedule the notification
+      await NotificationService.showNotification(
+        title: "Task Reminder",
+        body:
+            "Your task $taskName is scheduled at $scheduleDateTimeStr as a reminder.",
+        scheduled: true,
+        interval: interval,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    scheduleNotifications();
+    super.initState();
+  }
+
   final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -165,7 +232,7 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
             //date selection using DateTimelinePicker
             TaskDateTimeLine(onDateChange: (date) {}),
 
-             const SizedBox(
+            const SizedBox(
               height: 16,
             ),
 

@@ -102,7 +102,7 @@ class _TodoistTaskAppState extends State<TodoistTaskApp> {
         "due_string": dueDate,
         "priority": 4,
         "project_id": 2344765751,
-        "custom_reference": "i checking it work or not it is work fine"
+        
       };
 
       final response = await dio.post(apiUrl, data: taskData);

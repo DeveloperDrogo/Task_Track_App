@@ -8,11 +8,13 @@ class TaskMultiDropDownField extends StatelessWidget {
   final MultiSelectController<LabelsData> controller;
   final List<DropdownItem<LabelsData>> items;
   final Function(List<LabelsData>) onChanged;
-  const TaskMultiDropDownField(
-      {super.key,
-      required this.controller,
-      required this.items,
-      required this.onChanged});
+
+  const TaskMultiDropDownField({
+    super.key,
+    required this.controller,
+    required this.items,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -94,14 +96,9 @@ class TaskMultiDropDownField extends StatelessWidget {
         ),
         disabledIcon: Icon(Icons.lock, color: Colors.grey.shade300),
       ),
-      // validator: (value) {
-      //   if (value == null || value.isEmpty) {
-      //     return 'Please select a label';
-      //   }
-      //   return null;
-      // },
       onSelectionChange: (selectedItems) {
-        onChanged(selectedItems);
+
+        onChanged(selectedItems.map((item) => item).toList());
       },
     );
   }

@@ -10,6 +10,7 @@ import 'package:task_track_app/core/theme/adaptive_theme.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/task.dart';
 import 'package:task_track_app/init_dependencies.dart';
+import 'package:task_track_app/notification_service.dart';
 
 extension StringExtension on String {
   String capitalizeFirstLetter() {
@@ -23,6 +24,7 @@ extension StringExtension on String {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  await NotificationService.initializeNotification();
   await initDependencies();
   await SharedPrefs().init();
   LicenseRegistry.addLicense(() async* {
@@ -46,6 +48,7 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   final AdaptiveThemeMode? savedThemeMode;
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   const MyApp({super.key, this.savedThemeMode});
 
   @override
