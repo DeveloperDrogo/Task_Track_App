@@ -1,4 +1,2 @@
 ninja: Entering directory `/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/android/.cxx/Debug/t4y1y5h4/armeabi-v7a'
-[1/3] Building CXX object CMakeFiles/rive_text.dir/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/ios/harfbuzz/src/hb-subset-plan.cc.o
-[2/3] Building CXX object CMakeFiles/rive_text.dir/Users/parrophinssolutions/.pub-cache/hosted/pub.dev/rive_common-0.4.8/ios/harfbuzz/src/hb-subset.cc.o
-[3/3] Linking CXX shared library /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/cxx/Debug/t4y1y5h4/obj/armeabi-v7a/librive_text.so
+ninja: no work to do.
