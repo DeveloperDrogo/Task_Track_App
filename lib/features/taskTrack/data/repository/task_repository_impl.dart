@@ -98,4 +98,20 @@ class TaskRepositoryImpl implements TaskRepository {
       );
     }
   }
+  
+  @override
+  Future<Either<Failure, bool>> updateTask({required String taskName, required String des, required String dueDate, required String priority, required String taskId}) async{
+     try {
+      final result = await taskRemoteDataSource.updateTask(
+        taskName: taskName,
+        des: des,
+        dueDate: dueDate,
+        priority: priority,
+        taskId: taskId,
+      );
+      return right(result);
+    } on ServerException catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
 }

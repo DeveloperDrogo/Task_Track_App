@@ -49,8 +49,15 @@ final class MoveTaskSuccessState extends TaskActionState {
   final String taskName;
   final String taskId;
 
-  MoveTaskSuccessState({required this.projectId, required this.taskName,required this.taskId});
+  MoveTaskSuccessState(
+      {required this.projectId, required this.taskName, required this.taskId});
 }
 
+final class DeleteTaskSuccessState extends TaskActionState {}
 
-final class DeleteTaskSuccessState extends TaskActionState{}
+final class GetTaskInfoState extends TaskState {
+  final List<LabelsData> labels;
+  final TaskModel taskModel;
+
+  GetTaskInfoState({required this.labels, required this.taskModel});
+}

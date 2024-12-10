@@ -14,13 +14,16 @@ import 'package:task_track_app/features/taskTrack/presentation/utils/time_calcul
 
 class MyTaskList extends StatelessWidget {
   final Function(String) onCancellPress;
+  final Function(String) onEditPress;
   final Function(String, String, String) onMoveTaskPress;
   final TaskData taskData;
-  const MyTaskList(
-      {super.key,
-      required this.taskData,
-      required this.onCancellPress,
-      required this.onMoveTaskPress});
+  const MyTaskList({
+    super.key,
+    required this.taskData,
+    required this.onCancellPress,
+    required this.onMoveTaskPress,
+    required this.onEditPress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -375,7 +378,9 @@ class MyTaskList extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          onEditPress(taskData.taskID);
+                        },
                         icon: const Icon(
                           IconlyBroken.edit,
                         ),

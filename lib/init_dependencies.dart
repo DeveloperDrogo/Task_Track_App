@@ -8,9 +8,11 @@ import 'package:task_track_app/features/taskTrack/domain/repository/task_reposit
 import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_labels_use_case.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_task_use_case.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/move_task_use_case.dart';
+import 'package:task_track_app/features/taskTrack/domain/usecase/update_task.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'features/taskTrack/domain/usecase/add_task_use_case.dart';
 import 'features/taskTrack/domain/usecase/delete_task_use_case.dart';
+import 'features/taskTrack/domain/usecase/get_selected_task_info_use_case.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -84,8 +86,20 @@ void _initTask() {
     ),
   );
 
-   serviceLocator.registerFactory(
+  serviceLocator.registerFactory(
     () => DeleteTaskUseCase(
+      taskRepository: serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => GetSelectedTaskUseCase(
+      taskRepository: serviceLocator(),
+    ),
+  );
+
+  serviceLocator.registerFactory(
+    () => UpdateTaskUseCase(
       taskRepository: serviceLocator(),
     ),
   );
@@ -93,11 +107,12 @@ void _initTask() {
   //bloc
   serviceLocator.registerFactory(
     () => TaskBloc(
-      deleteTaskUseCase: serviceLocator(),
-      moveTaskUseCase: serviceLocator(),
-      getAllTaskUseCase: serviceLocator(),
-      getAllLabelsUseCase: serviceLocator(),
-      addTaskUseCase: serviceLocator()
-    ),
+        updateTaskUseCase: serviceLocator(),
+        getSelectedTaskUseCase: serviceLocator(),
+        deleteTaskUseCase: serviceLocator(),
+        moveTaskUseCase: serviceLocator(),
+        getAllTaskUseCase: serviceLocator(),
+        getAllLabelsUseCase: serviceLocator(),
+        addTaskUseCase: serviceLocator()),
   );
 }

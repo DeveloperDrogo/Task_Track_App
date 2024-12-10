@@ -8,16 +8,27 @@ class TaskMultiDropDownField extends StatelessWidget {
   final MultiSelectController<LabelsData> controller;
   final List<DropdownItem<LabelsData>> items;
   final Function(List<LabelsData>) onChanged;
+  final List ?initialSelectedLabels;
 
   const TaskMultiDropDownField({
     super.key,
     required this.controller,
     required this.items,
-    required this.onChanged,
+    required this.onChanged,  this.initialSelectedLabels,
   });
 
   @override
   Widget build(BuildContext context) {
+    List<DropdownItem<LabelsData>> selectedItems = initialSelectedLabels!
+      .map((labelName) => DropdownItem<LabelsData>(
+            value: LabelsData(
+                labelName: labelName,
+                labelId: '',
+            ),
+            label: labelName,
+          ))
+      .toList();
+    controller.selectWhere((item) => selectedItems.contains(item),);
     return MultiDropdown(
       items: items,
       controller: controller,
@@ -96,6 +107,7 @@ class TaskMultiDropDownField extends StatelessWidget {
         ),
         disabledIcon: Icon(Icons.lock, color: Colors.grey.shade300),
       ),
+      
       onSelectionChange: (selectedItems) {
 
         onChanged(selectedItems.map((item) => item).toList());

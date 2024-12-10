@@ -18,4 +18,11 @@ abstract interface class TaskRepository {
       {required String taskId, required String projectId});
   Future<Either<Failure, bool>> deleteTask({required String taskId});
   Future<Either<Failure, TaskModel>> getTaskDetails({required String taskId});
+  Future<Either<Failure, bool>> updateTask({
+    required String taskName,
+    required String des,
+    required String dueDate,
+    required String priority,
+    required String taskId,
+  });
 }

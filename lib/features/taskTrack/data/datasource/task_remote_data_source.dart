@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:task_track_app/core/error/exception.dart';
 import 'package:task_track_app/features/taskTrack/data/model/label_model.dart';
@@ -19,6 +17,12 @@ abstract interface class TaskRemoteDataSource {
   Future<bool> moveTask({required String taskId, required String projectId});
   Future<bool> deleteTask({required String taskId});
   Future<TaskModel> getTaskDetailsForTaskId({required String taskId});
+  Future<bool> updateTask(
+      {required String taskName,
+      required String des,
+      required String dueDate,
+      required String priority,
+      required String taskId});
 }
 
 class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
@@ -180,7 +184,7 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
   @override
   Future<TaskModel> getTaskDetailsForTaskId({required String taskId}) async {
     try {
-      final response = await dio.post(
+      final response = await dio.get(
         '${restApiUrl}tasks/$taskId',
         options: Options(
           headers: {
@@ -189,9 +193,43 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
         ),
       );
       print(response.data);
-      Map<String, dynamic> result = Map<String, dynamic>.from(response.data);
 
-      return TaskModel.fromJson(result);
+      // Directly pass response.data to TaskModel.fromJson
+      return TaskModel.fromJson(response.data as Map<String, dynamic>);
+    } catch (e) {
+      print('error is $e');
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<bool> updateTask(
+      {required String taskName,
+      required String des,
+      required String dueDate,
+      required String priority,
+      required String taskId}) async {
+    try {
+      final response = await dio.post(
+        '${restApiUrl}tasks/$taskId',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $apiToken',
+            'Content-Type': 'application/json'
+          },
+        ),
+        data: {
+          "content": taskName,
+          "description": des,
+          "priority": priority,
+          "due_string": dueDate,
+        },
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (e) {
       throw ServerException(e.toString());
     }

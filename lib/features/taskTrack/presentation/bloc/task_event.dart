@@ -42,3 +42,24 @@ final class DeleteTaskEvent extends TaskEvent {
   final String taskId;
   DeleteTaskEvent({required this.taskId});
 }
+
+final class GetSelectedTaskInfoEvent extends TaskEvent {
+  final String taskId;
+  GetSelectedTaskInfoEvent({required this.taskId});
+}
+
+final class UpdateTaskEvent extends TaskEvent {
+  final String taskName;
+  final String des;
+  final String dueDate;
+  final String priority;
+  final String taskId;
+
+  UpdateTaskEvent({
+    required this.taskName,
+    required this.des,
+    required this.dueDate,
+    required this.priority,
+    required this.taskId,
+  });
+}

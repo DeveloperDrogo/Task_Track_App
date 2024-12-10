@@ -8,6 +8,7 @@ import 'package:task_track_app/core/theme/app_pallet.dart';
 import 'package:task_track_app/core/utils/show_snackbar.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/add_task.dart';
+import 'package:task_track_app/features/taskTrack/presentation/screens/update_task.dart';
 import 'package:task_track_app/features/taskTrack/presentation/utils/notification_manager.dart';
 import 'package:task_track_app/features/taskTrack/presentation/utils/time_calculation.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/app_bar_title.dart';
@@ -129,7 +130,6 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
           if (state is TaskErrorState) {
             showSnackBar(context, state.errorMessage);
           } else if (state is MoveTaskSuccessState) {
-            
             ProgressTimeCalculation.storeProgressDateTime(
               projectId: state.projectId,
               taskId: state.taskId,
@@ -268,6 +268,10 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                                         ),
                                       );
                                 },
+                                onEditPress: (taskId) {
+                                  Navigator.push(context,
+                                      UpdateTask.route(taskId: taskId));
+                                },
                               );
                             },
                           ),
@@ -399,7 +403,7 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
       setState(() {
         selectedPriority = value;
       });
-     // print('Priority selected: $value');
+      // print('Priority selected: $value');
       //}
     });
   }
@@ -467,7 +471,7 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
       setState(() {
         selectedProject = value;
       });
-    //  print('Project status selected: $value');
+      //  print('Project status selected: $value');
       //}
     });
   }
