@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
+import 'package:task_track_app/core/constant/constant.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
+import 'package:task_track_app/core/utils/show_dialog.dart';
 import 'package:task_track_app/core/utils/show_snackbar.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/add_task.dart';
@@ -123,165 +127,184 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
           ),
         ],
       ),
-      body: BlocConsumer<TaskBloc, TaskState>(
-        listenWhen: (previous, current) => current is TaskActionState,
-        buildWhen: (previous, current) => current is! TaskActionState,
-        listener: (context, state) {
-          if (state is TaskErrorState) {
-            showSnackBar(context, state.errorMessage);
-          } else if (state is MoveTaskSuccessState) {
-            ProgressTimeCalculation.storeProgressDateTime(
-              projectId: state.projectId,
-              taskId: state.taskId,
-            );
-
-            NotificationManager.moveNotification(
-              taskName: state.taskName,
-              projectId: state.projectId,
-            );
-            Navigator.pushAndRemoveUntil(
-              context,
-              TaskTrackPage.route(),
-              (route) => false,
-            );
-          } else if (state is DeleteTaskSuccessState) {
-            Navigator.pushAndRemoveUntil(
-              context,
-              TaskTrackPage.route(),
-              (route) => false,
-            );
-          }
+      body: WillPopScope(
+        onWillPop: () async{
+           showAwesomeDialog(
+            context: context,
+            type: Constant.exit,
+            title: 'Exit Confirmation',
+            desc: 'Are you sure you want to exit the app?',
+            successButtonText: 'Yes',
+            failedButtonText: 'No',
+            okButtonPress: () {
+              exit(0);
+            },
+            cancelButtonPress: () {
+              Navigator.pop(context);
+            },
+          );
+          return false;
         },
-        builder: (context, state) {
-          if (state is TaskLoadState) {
-            return const Loader();
-          } else if (state is GetAllTaskState) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0).copyWith(top: 10),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 6,
-                        child: TaskSearchFilter(
-                          searchController: _searchController,
-                          onclear: () {
-                            setState(() {
-                              _searchController.clear();
-                            });
-                          },
-                          onChanged: (value) {
-                            setState(() {});
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                      Expanded(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 0.5, color: Colors.grey),
-                            borderRadius: BorderRadius.circular(10),
-                            // color: Theme.of(context).cardTheme.color,
+        child: BlocConsumer<TaskBloc, TaskState>(
+          listenWhen: (previous, current) => current is TaskActionState,
+          buildWhen: (previous, current) => current is! TaskActionState,
+          listener: (context, state) {
+            if (state is TaskErrorState) {
+              showSnackBar(context, state.errorMessage);
+            } else if (state is MoveTaskSuccessState) {
+              ProgressTimeCalculation.storeProgressDateTime(
+                projectId: state.projectId,
+                taskId: state.taskId,
+              );
+      
+              NotificationManager.moveNotification(
+                taskName: state.taskName,
+                projectId: state.projectId,
+              );
+              Navigator.pushAndRemoveUntil(
+                context,
+                TaskTrackPage.route(),
+                (route) => false,
+              );
+            } else if (state is DeleteTaskSuccessState) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                TaskTrackPage.route(),
+                (route) => false,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is TaskLoadState) {
+              return const Loader();
+            } else if (state is GetAllTaskState) {
+              return Padding(
+                padding: const EdgeInsets.all(16.0).copyWith(top: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 6,
+                          child: TaskSearchFilter(
+                            searchController: _searchController,
+                            onclear: () {
+                              setState(() {
+                                _searchController.clear();
+                              });
+                            },
+                            onChanged: (value) {
+                              setState(() {});
+                            },
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 0, bottom: 0),
-                            child: IconButton(
-                              onPressed: () {
-                                showMainMenu(context);
-                              },
-                              icon: const Icon(
-                                IconlyBroken.filter,
-                                size: 25,
+                        ),
+                        const SizedBox(width: 5),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 0.5, color: Colors.grey),
+                              borderRadius: BorderRadius.circular(10),
+                              // color: Theme.of(context).cardTheme.color,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 0, bottom: 0),
+                              child: IconButton(
+                                onPressed: () {
+                                  showMainMenu(context);
+                                },
+                                icon: const Icon(
+                                  IconlyBroken.filter,
+                                  size: 25,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 6,
-                  ),
-                  //date selection using DateTimelinePicker
-                  TaskDateTimeLine(onDateChange: (date) {
-                    setState(() {
-                      filterDate = DateFormat('yyyy-MM-dd').format(date);
-                    });
-                  }),
-
-                  const SizedBox(
-                    height: 16,
-                  ),
-
-                  state.taskData
-                          .where((task) =>
-                              (_searchController.text.isEmpty ||
-                                  task.taskName.toLowerCase().contains(
-                                        _searchController.text.toLowerCase(),
-                                      )) &&
-                              (filterDate.isEmpty ||
-                                  task.dueDate.contains(filterDate)) &&
-                              (selectedProject == null ||
-                                  task.projectId ==
-                                      selectedProject.toString()) &&
-                              (selectedPriority == null ||
-                                  task.priority == selectedPriority.toString()))
-                          .isEmpty
-                      ? const EmptyTask()
-                      : Expanded(
-                          child: ListView.builder(
-                            padding: const EdgeInsets.only(bottom: 70),
-                            itemCount: state.taskData.length,
-                            itemBuilder: (context, index) {
-                              final task = state.taskData[index];
-                              // Apply the same filter logic as above
-                              if ((_searchController.text.isNotEmpty &&
-                                      !task.taskName.toLowerCase().contains(
-                                          _searchController.text
-                                              .toLowerCase())) ||
-                                  (filterDate.isNotEmpty &&
-                                      !task.dueDate.contains(filterDate)) ||
-                                  (selectedProject != null &&
-                                      task.projectId !=
-                                          selectedProject.toString()) ||
-                                  (selectedPriority != null &&
-                                      task.priority !=
-                                          selectedPriority.toString())) {
-                                return const SizedBox
-                                    .shrink(); // Hide if not matching
-                              }
-                              return MyTaskList(
-                                taskData: task,
-                                onCancellPress: (taskId) {
-                                  context
-                                      .read<TaskBloc>()
-                                      .add(DeleteTaskEvent(taskId: taskId));
-                                },
-                                onMoveTaskPress: (taskId, projectId, taskName) {
-                                  context.read<TaskBloc>().add(
-                                        MoveTaskEvent(
-                                          taskId: taskId,
-                                          projectId: projectId,
-                                          taskName: taskName,
-                                        ),
-                                      );
-                                },
-                                onEditPress: (taskId) {
-                                  Navigator.push(context,
-                                      UpdateTask.route(taskId: taskId));
-                                },
-                              );
-                            },
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    //date selection using DateTimelinePicker
+                    TaskDateTimeLine(onDateChange: (date) {
+                      setState(() {
+                        filterDate = DateFormat('yyyy-MM-dd').format(date);
+                      });
+                    }),
+      
+                    const SizedBox(
+                      height: 16,
+                    ),
+      
+                    state.taskData
+                            .where((task) =>
+                                (_searchController.text.isEmpty ||
+                                    task.taskName.toLowerCase().contains(
+                                          _searchController.text.toLowerCase(),
+                                        )) &&
+                                (filterDate.isEmpty ||
+                                    task.dueDate.contains(filterDate)) &&
+                                (selectedProject == null ||
+                                    task.projectId ==
+                                        selectedProject.toString()) &&
+                                (selectedPriority == null ||
+                                    task.priority == selectedPriority.toString()))
+                            .isEmpty
+                        ? const EmptyTask()
+                        : Expanded(
+                            child: ListView.builder(
+                              padding: const EdgeInsets.only(bottom: 70),
+                              itemCount: state.taskData.length,
+                              itemBuilder: (context, index) {
+                                final task = state.taskData[index];
+                                // Apply the same filter logic as above
+                                if ((_searchController.text.isNotEmpty &&
+                                        !task.taskName.toLowerCase().contains(
+                                            _searchController.text
+                                                .toLowerCase())) ||
+                                    (filterDate.isNotEmpty &&
+                                        !task.dueDate.contains(filterDate)) ||
+                                    (selectedProject != null &&
+                                        task.projectId !=
+                                            selectedProject.toString()) ||
+                                    (selectedPriority != null &&
+                                        task.priority !=
+                                            selectedPriority.toString())) {
+                                  return const SizedBox
+                                      .shrink(); // Hide if not matching
+                                }
+                                return MyTaskList(
+                                  taskData: task,
+                                  onCancellPress: (taskId) {
+                                    context
+                                        .read<TaskBloc>()
+                                        .add(DeleteTaskEvent(taskId: taskId));
+                                  },
+                                  onMoveTaskPress: (taskId, projectId, taskName) {
+                                    context.read<TaskBloc>().add(
+                                          MoveTaskEvent(
+                                            taskId: taskId,
+                                            projectId: projectId,
+                                            taskName: taskName,
+                                          ),
+                                        );
+                                  },
+                                  onEditPress: (taskId) {
+                                    Navigator.push(context,
+                                        UpdateTask.route(taskId: taskId));
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                ],
-              ),
-            );
-          }
-          return const SizedBox();
-        },
+                  ],
+                ),
+              );
+            }
+            return const SizedBox();
+          },
+        ),
       ),
     );
   }

@@ -19,16 +19,7 @@ class TaskMultiDropDownField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<DropdownItem<LabelsData>> selectedItems = initialSelectedLabels!
-      .map((labelName) => DropdownItem<LabelsData>(
-            value: LabelsData(
-                labelName: labelName,
-                labelId: '',
-            ),
-            label: labelName,
-          ))
-      .toList();
-    controller.selectWhere((item) => selectedItems.contains(item),);
+    
     return MultiDropdown(
       items: items,
       controller: controller,
