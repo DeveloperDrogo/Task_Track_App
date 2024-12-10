@@ -6,6 +6,7 @@ import 'package:task_track_app/core/usecase/usecase.dart';
 import 'package:task_track_app/features/taskTrack/domain/entities/label_data.dart';
 import 'package:task_track_app/features/taskTrack/domain/entities/task_data.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/add_task_use_case.dart';
+import 'package:task_track_app/features/taskTrack/domain/usecase/delete_task_use_case.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_labels_use_case.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_task_use_case.dart';
 import 'package:task_track_app/features/taskTrack/domain/usecase/move_task_use_case.dart';
@@ -17,21 +18,25 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   final AddTaskUseCase _addTaskUseCase;
   final GetAllTaskUseCase _getAllTaskUseCase;
   final MoveTaskUseCase _moveTaskUseCase;
+  final DeleteTaskUseCase _deleteTaskUseCase;
 
   TaskBloc({
     required GetAllLabelsUseCase getAllLabelsUseCase,
     required AddTaskUseCase addTaskUseCase,
     required GetAllTaskUseCase getAllTaskUseCase,
     required MoveTaskUseCase moveTaskUseCase,
+    required DeleteTaskUseCase deleteTaskUseCase,
   })  : _getAllLabelsUseCase = getAllLabelsUseCase,
         _addTaskUseCase = addTaskUseCase,
         _getAllTaskUseCase = getAllTaskUseCase,
         _moveTaskUseCase = moveTaskUseCase,
+        _deleteTaskUseCase = deleteTaskUseCase,
         super(TaskInitial()) {
     on<GetAllAddTaskEvent>(_getAllAddTaskEvent);
     on<AddTaskEvent>(_addTaskEvent);
     on<GetAllTaskEvent>(_getAllTaskEvent);
     on<MoveTaskEvent>(_moveTaskEvent);
+    on<DeleteTaskEvent>(_deleteTaskEvent);
   }
 
   FutureOr<void> _getAllAddTaskEvent(
@@ -102,7 +107,29 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       MoveTaskEvent event, Emitter<TaskState> emit) async {
     final result = await _moveTaskUseCase(
         MoveTaskParms(taskId: event.taskId, projectId: event.projectId));
-    result.fold((l) => emit(TaskErrorState(errorMessage: l.message,),), (r) =>emit(MoveTaskSuccessState(),) );
-    
+    result.fold(
+        (l) => emit(
+              TaskErrorState(
+                errorMessage: l.message,
+              ),
+            ),
+        (r) => emit(
+              MoveTaskSuccessState(
+                taskName: event.taskName,
+                projectId: event.projectId,
+                taskId: event.taskId
+              ),
+            ));
+  }
+
+  FutureOr<void> _deleteTaskEvent(
+      DeleteTaskEvent event, Emitter<TaskState> emit) async {
+    final result =
+        await _deleteTaskUseCase(DeleteTaskParms(taskId: event.taskId));
+    result.fold(
+        (l) => emit(
+              TaskErrorState(errorMessage: l.message),
+            ),
+        (r) => emit(DeleteTaskSuccessState()));
   }
 }

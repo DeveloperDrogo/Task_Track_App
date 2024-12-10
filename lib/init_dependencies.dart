@@ -10,6 +10,7 @@ import 'package:task_track_app/features/taskTrack/domain/usecase/get_all_task_us
 import 'package:task_track_app/features/taskTrack/domain/usecase/move_task_use_case.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'features/taskTrack/domain/usecase/add_task_use_case.dart';
+import 'features/taskTrack/domain/usecase/delete_task_use_case.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -83,9 +84,16 @@ void _initTask() {
     ),
   );
 
+   serviceLocator.registerFactory(
+    () => DeleteTaskUseCase(
+      taskRepository: serviceLocator(),
+    ),
+  );
+
   //bloc
   serviceLocator.registerFactory(
     () => TaskBloc(
+      deleteTaskUseCase: serviceLocator(),
       moveTaskUseCase: serviceLocator(),
       getAllTaskUseCase: serviceLocator(),
       getAllLabelsUseCase: serviceLocator(),

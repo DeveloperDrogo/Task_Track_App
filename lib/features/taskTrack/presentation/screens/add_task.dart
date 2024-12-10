@@ -82,17 +82,31 @@ class _AddTaskPageState extends State<AddTaskPage> {
         child: SubmitButton(
             onpressed: () {
               if (_formKey.currentState!.validate()) {
-                context.read<TaskBloc>().add(
-                      AddTaskEvent(
-                        taskName: _title.text,
-                        des: _desc.text,
-                        dueDate: dueDate!,
-                        priority: priority!,
-                        labels: labelValue,
-                        scheduleDate: scheduleDate!,
-                        scheduleTime: scheduleTime!,
-                      ),
-                    );
+                if (scheduleDate != null && scheduleTime != null) {
+                  context.read<TaskBloc>().add(
+                        AddTaskEvent(
+                          taskName: _title.text,
+                          des: _desc.text,
+                          dueDate: dueDate!,
+                          priority: priority!,
+                          labels: labelValue,
+                          scheduleDate: scheduleDate!,
+                          scheduleTime: scheduleTime!,
+                        ),
+                      );
+                } else {
+                  context.read<TaskBloc>().add(
+                        AddTaskEvent(
+                          taskName: _title.text,
+                          des: _desc.text,
+                          dueDate: dueDate!,
+                          priority: priority!,
+                          labels: labelValue,
+                          scheduleDate: '',
+                          scheduleTime: Time(hour: 0, minute: 0),
+                        ),
+                      );
+                }
               }
             },
             buttonText: "Add Task"),
@@ -130,9 +144,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
               successButtonText: 'Okay',
               failedButtonText: 'Close',
               okButtonPress: () {
-                NotificationManager.scheduleNotifications(
-                    mergeDateTime(state.scheduleDate, state.sheduleTime),
-                    state.taskName);
+                if (state.scheduleDate != '' &&
+                    scheduleTime != Time(hour: 0, minute: 0)) {
+                  NotificationManager.scheduleNotifications(
+                      mergeDateTime(state.scheduleDate, state.sheduleTime),
+                      state.taskName);
+                }
 
                 Navigator.pushAndRemoveUntil(
                   context,
@@ -141,9 +158,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 );
               },
               cancelButtonPress: () {
-                NotificationManager.scheduleNotifications(
-                    mergeDateTime(state.scheduleDate, state.sheduleTime),
-                    state.taskName);
+                 if (state.scheduleDate != '' &&
+                    scheduleTime != Time(hour: 0, minute: 0)) {
+                  NotificationManager.scheduleNotifications(
+                      mergeDateTime(state.scheduleDate, state.sheduleTime),
+                      state.taskName);
+                }
 
                 Navigator.pushAndRemoveUntil(
                   context,
@@ -175,7 +195,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 );
               },
             );
-          } 
+          }
         },
         builder: (context, state) {
           if (state is TaskLoadState) {
@@ -223,6 +243,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 16,
                       ),
                       TaskDatePicker(
+                        firstDate: DateTime.now(),
                         validatorRequired: true,
                         label: 'Due Date',
                         hintText: 'Enter Due Date',
@@ -311,6 +332,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                                 padding: const EdgeInsets.all(10.0)
                                     .copyWith(left: 16, right: 16),
                                 child: TaskDatePicker(
+                                  firstDate: DateTime.now(),
                                   label: 'Date',
                                   hintText: 'Select Date',
                                   onDateSelected: (date) {

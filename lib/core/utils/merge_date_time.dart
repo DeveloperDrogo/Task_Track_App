@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 String mergeDateTime(String scheduleDate, TimeOfDay scheduleTime) {
+
+  // if(scheduleDate=='' ){
+  //   return null;
+  // }
+
   // Parse the date
   DateTime date = DateFormat("yyyy-MM-dd").parse(scheduleDate);
 

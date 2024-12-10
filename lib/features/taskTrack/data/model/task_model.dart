@@ -2,15 +2,14 @@ import 'dart:convert';
 import 'package:task_track_app/features/taskTrack/domain/entities/task_data.dart';
 
 class TaskModel extends TaskData {
-  TaskModel({
-    required super.taskID,
-    required super.taskName,
-    required super.des,
-    required super.dueDate,
-    required super.priority,
-    required super.labels,
-    required super.projectId
-  });
+  TaskModel(
+      {required super.taskID,
+      required super.taskName,
+      required super.des,
+      required super.dueDate,
+      required super.priority,
+      required super.labels,
+      required super.projectId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,7 +19,7 @@ class TaskModel extends TaskData {
       'dueDate': dueDate,
       'priority': priority,
       'labels': labels,
-      'project_id':projectId
+      'project_id': projectId
     };
   }
 
@@ -40,6 +39,13 @@ class TaskModel extends TaskData {
 
   String toJson() => json.encode(toMap());
 
-  factory TaskModel.fromJson(String source) =>
-      TaskModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory TaskModel.fromJson(dynamic source) {
+    if (source is String) {
+      return TaskModel.fromMap(json.decode(source) as Map<String, dynamic>);
+    } else if (source is Map<String, dynamic>) {
+      return TaskModel.fromMap(source);
+    } else {
+      throw ArgumentError('Invalid source type for ProfileModel.fromJson');
+    }
+  }
 }

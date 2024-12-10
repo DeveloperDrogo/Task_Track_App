@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:task_track_app/core/error/exception.dart';
 import 'package:task_track_app/features/taskTrack/data/model/label_model.dart';
@@ -15,6 +17,8 @@ abstract interface class TaskRemoteDataSource {
   });
   Future<List<TaskModel>> getAllTask();
   Future<bool> moveTask({required String taskId, required String projectId});
+  Future<bool> deleteTask({required String taskId});
+  Future<TaskModel> getTaskDetailsForTaskId({required String taskId});
 }
 
 class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
@@ -104,7 +108,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
         ),
       );
 
-
       // Correctly decode the response as a list of maps
       List<Map<String, dynamic>> result =
           List<Map<String, dynamic>>.from(response.data);
@@ -153,6 +156,42 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
       } else {
         return false;
       }
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<bool> deleteTask({required String taskId}) async {
+    try {
+      final Dio dio = Dio();
+      dio.options.headers["Authorization"] = "Bearer $apiToken";
+      final response = await dio.delete('${restApiUrl}tasks/$taskId');
+      if (response.statusCode == 204 || response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<TaskModel> getTaskDetailsForTaskId({required String taskId}) async {
+    try {
+      final response = await dio.post(
+        '${restApiUrl}tasks/$taskId',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $apiToken',
+          },
+        ),
+      );
+      print(response.data);
+      Map<String, dynamic> result = Map<String, dynamic>.from(response.data);
+
+      return TaskModel.fromJson(result);
     } catch (e) {
       throw ServerException(e.toString());
     }

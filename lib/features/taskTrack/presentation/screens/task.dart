@@ -2,14 +2,17 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
+import 'package:intl/intl.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
 import 'package:task_track_app/core/utils/show_snackbar.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/add_task.dart';
+import 'package:task_track_app/features/taskTrack/presentation/utils/notification_manager.dart';
+import 'package:task_track_app/features/taskTrack/presentation/utils/time_calculation.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/app_bar_title.dart';
-import 'package:task_track_app/features/taskTrack/presentation/widgets/badge.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/date_time_line.dart';
+import 'package:task_track_app/features/taskTrack/presentation/widgets/empty_task.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/my_task_list.dart';
 import 'package:task_track_app/features/taskTrack/presentation/widgets/task_search_filter.dart';
 
@@ -24,8 +27,13 @@ class TaskTrackPage extends StatefulWidget {
 }
 
 class _TaskTrackPageState extends State<TaskTrackPage> {
+  String filterDate = '';
+  int? selectedPriority; // Tracks the selected priority (4 for Urgent, etc.)
+  String? selectedProject; // Tracks the selected project status
+
   @override
   void initState() {
+    filterDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
     context.read<TaskBloc>().add(GetAllTaskEvent());
     super.initState();
   }
@@ -67,7 +75,7 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
           //light and dark mode theme set
           PopupMenuButton<int>(
             icon: CircleAvatar(
-              radius: 14,
+              radius: 16,
               backgroundColor: AppPallete.transparentColor,
               child: AdaptiveTheme.of(context).mode.isDark
                   ? Padding(
@@ -108,25 +116,9 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
               ),
             ],
           ),
+
           const SizedBox(
-            width: 2,
-          ),
-          CustomBadge(
-            badgeCount: 0,
-            onTap: () {},
-          ),
-          const SizedBox(
-            width: 12,
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: const Icon(
-              Icons.menu_sharp,
-              size: 27,
-            ),
-          ),
-          const SizedBox(
-            width: 20,
+            width: 16,
           ),
         ],
       ),
@@ -136,7 +128,23 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
         listener: (context, state) {
           if (state is TaskErrorState) {
             showSnackBar(context, state.errorMessage);
-          }else if (state is MoveTaskSuccessState) {
+          } else if (state is MoveTaskSuccessState) {
+            
+            ProgressTimeCalculation.storeProgressDateTime(
+              projectId: state.projectId,
+              taskId: state.taskId,
+            );
+
+            NotificationManager.moveNotification(
+              taskName: state.taskName,
+              projectId: state.projectId,
+            );
+            Navigator.pushAndRemoveUntil(
+              context,
+              TaskTrackPage.route(),
+              (route) => false,
+            );
+          } else if (state is DeleteTaskSuccessState) {
             Navigator.pushAndRemoveUntil(
               context,
               TaskTrackPage.route(),
@@ -180,11 +188,14 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 0, bottom: 0),
                             child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  IconlyBroken.filter,
-                                  size: 25,
-                                )),
+                              onPressed: () {
+                                showMainMenu(context);
+                              },
+                              icon: const Icon(
+                                IconlyBroken.filter,
+                                size: 25,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -194,27 +205,73 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                     height: 6,
                   ),
                   //date selection using DateTimelinePicker
-                  TaskDateTimeLine(onDateChange: (date) {}),
+                  TaskDateTimeLine(onDateChange: (date) {
+                    setState(() {
+                      filterDate = DateFormat('yyyy-MM-dd').format(date);
+                    });
+                  }),
 
                   const SizedBox(
                     height: 16,
                   ),
 
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: state.taskData.length,
-                      itemBuilder: (context, index) {
-                        return MyTaskList(
-                          taskData: state.taskData[index],
-                          onCancellPress: (p0) {},
-                          onMoveTaskPress: (taskId, projectId) {
-                            context.read<TaskBloc>().add(MoveTaskEvent(
-                                taskId: taskId, projectId: projectId));
-                          },
-                        );
-                      },
-                    ),
-                  )
+                  state.taskData
+                          .where((task) =>
+                              (_searchController.text.isEmpty ||
+                                  task.taskName.toLowerCase().contains(
+                                        _searchController.text.toLowerCase(),
+                                      )) &&
+                              (filterDate.isEmpty ||
+                                  task.dueDate.contains(filterDate)) &&
+                              (selectedProject == null ||
+                                  task.projectId ==
+                                      selectedProject.toString()) &&
+                              (selectedPriority == null ||
+                                  task.priority == selectedPriority.toString()))
+                          .isEmpty
+                      ? const EmptyTask()
+                      : Expanded(
+                          child: ListView.builder(
+                            padding: const EdgeInsets.only(bottom: 70),
+                            itemCount: state.taskData.length,
+                            itemBuilder: (context, index) {
+                              final task = state.taskData[index];
+                              // Apply the same filter logic as above
+                              if ((_searchController.text.isNotEmpty &&
+                                      !task.taskName.toLowerCase().contains(
+                                          _searchController.text
+                                              .toLowerCase())) ||
+                                  (filterDate.isNotEmpty &&
+                                      !task.dueDate.contains(filterDate)) ||
+                                  (selectedProject != null &&
+                                      task.projectId !=
+                                          selectedProject.toString()) ||
+                                  (selectedPriority != null &&
+                                      task.priority !=
+                                          selectedPriority.toString())) {
+                                return const SizedBox
+                                    .shrink(); // Hide if not matching
+                              }
+                              return MyTaskList(
+                                taskData: task,
+                                onCancellPress: (taskId) {
+                                  context
+                                      .read<TaskBloc>()
+                                      .add(DeleteTaskEvent(taskId: taskId));
+                                },
+                                onMoveTaskPress: (taskId, projectId, taskName) {
+                                  context.read<TaskBloc>().add(
+                                        MoveTaskEvent(
+                                          taskId: taskId,
+                                          projectId: projectId,
+                                          taskName: taskName,
+                                        ),
+                                      );
+                                },
+                              );
+                            },
+                          ),
+                        ),
                 ],
               ),
             );
@@ -223,5 +280,195 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
         },
       ),
     );
+  }
+
+  void showMainMenu(BuildContext context) {
+    showMenu(
+      context: context,
+      position: const RelativeRect.fromLTRB(100, 50, 0, 0),
+      items: [
+        PopupMenuItem(
+          value: 'priority',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Priority'),
+              if (selectedPriority != null)
+                const Icon(
+                  Icons.filter_alt_outlined,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: 'project',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Project'),
+              if (selectedProject != null)
+                const Icon(
+                  Icons.filter_alt_outlined,
+                ),
+            ],
+          ),
+        ),
+      ],
+    ).then((value) {
+      if (value == 'priority') {
+        showPriorityMenu(context);
+      } else if (value == 'project') {
+        showProjectMenu(context);
+      }
+    });
+  }
+
+  void showPriorityMenu(BuildContext context) {
+    showMenu(
+      context: context,
+      position: const RelativeRect.fromLTRB(100, 100, 0, 0),
+      items: [
+        PopupMenuItem(
+          value: 4,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Urgent'),
+              if (selectedPriority == 4)
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: 3,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Important'),
+              if (selectedPriority == 3)
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: 2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Medium'),
+              if (selectedPriority == 2)
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: 1,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Low'),
+              if (selectedPriority == 1)
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: null,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('All'),
+              if (selectedPriority == null)
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+      ],
+    ).then((value) {
+      //if (value != null) {
+      setState(() {
+        selectedPriority = value;
+      });
+     // print('Priority selected: $value');
+      //}
+    });
+  }
+
+  void showProjectMenu(BuildContext context) {
+    showMenu(
+      context: context,
+      position: const RelativeRect.fromLTRB(100, 100, 0, 0),
+      items: [
+        PopupMenuItem(
+          value: '2344765751',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Not Started'),
+              if (selectedProject == '2344765751')
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: '2344851608',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('In Progress'),
+              if (selectedProject == '2344851608')
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: '2344765762',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Completed'),
+              if (selectedProject == '2344765762')
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          value: null,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('All'),
+              if (selectedProject == null)
+                const Icon(
+                  Icons.check,
+                ),
+            ],
+          ),
+        ),
+      ],
+    ).then((value) {
+      // if (value != null) {
+      setState(() {
+        selectedProject = value;
+      });
+    //  print('Project status selected: $value');
+      //}
+    });
   }
 }

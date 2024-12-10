@@ -10,24 +10,27 @@ class RichTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 40),
+      padding: const EdgeInsets.only(right: 0),
       child: RichText(
         text: TextSpan(
           text: keyText,
-          style: TextStyle(
-              color: AdaptiveTheme.of(context).mode.isDark
-                  ? const Color.fromARGB(255, 178, 178, 178)
-                  : const Color.fromARGB(255, 140, 140, 140)),
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                fontSize: 15,
+                height: 1.5,
+                color: AdaptiveTheme.of(context).mode.isDark
+                    ? const Color.fromARGB(255, 178, 178, 178)
+                    : const Color.fromARGB(255, 140, 140, 140),
+                fontWeight: FontWeight.w400,
+              ),
           children: [
             TextSpan(
-                text: valueText,
-                style: TextStyle(
+              text: valueText,
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontSize: 15,
                     height: 1.5,
-                    color: AdaptiveTheme.of(context).mode.isDark
-                        ? Colors.white
-                        : Colors.black,
-                    fontFamily: "Lato",
-                    fontWeight: FontWeight.w500))
+                    fontWeight: FontWeight.w600,
+                  ),
+            )
           ],
         ),
       ),

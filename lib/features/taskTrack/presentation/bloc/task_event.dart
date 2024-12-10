@@ -29,6 +29,16 @@ final class GetAllTaskEvent extends TaskEvent {}
 final class MoveTaskEvent extends TaskEvent {
   final String taskId;
   final String projectId;
+  final String taskName;
 
-  MoveTaskEvent({required this.taskId, required this.projectId});
+  MoveTaskEvent({
+    required this.taskId,
+    required this.projectId,
+    required this.taskName,
+  });
+}
+
+final class DeleteTaskEvent extends TaskEvent {
+  final String taskId;
+  DeleteTaskEvent({required this.taskId});
 }
