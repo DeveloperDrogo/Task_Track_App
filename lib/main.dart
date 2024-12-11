@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,7 @@ import 'package:task_track_app/core/theme/adaptive_theme.dart';
 import 'package:task_track_app/features/comment/presentation/bloc/comment_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/task.dart';
+import 'package:task_track_app/firebase_options.dart';
 import 'package:task_track_app/init_dependencies.dart';
 import 'package:task_track_app/notification_service.dart';
 
@@ -24,7 +26,9 @@ extension StringExtension on String {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await dotenv.load(fileName: ".env");
   await NotificationService.initializeNotification();
   await initDependencies();
@@ -38,13 +42,12 @@ void main() async {
 
   runApp(MultiBlocProvider(
     providers: [
-       BlocProvider(
+      BlocProvider(
         create: (_) => serviceLocator<TaskBloc>(),
       ),
-        BlocProvider(
+      BlocProvider(
         create: (_) => serviceLocator<CommentBloc>(),
       ),
-      
     ],
     child: MyApp(
       savedThemeMode: savedThemeMode,

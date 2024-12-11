@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:task_track_app/notification_service.dart';
 
@@ -38,8 +39,13 @@ class NotificationManager {
       return;
     }
 
+    debugPrint('difference is $difference');
+
+
     // Calculate the interval
     int interval = difference.inSeconds;
+
+    debugPrint('interval is $interval');
 
     // Schedule the notification
     await NotificationService.showNotification(

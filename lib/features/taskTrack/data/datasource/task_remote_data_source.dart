@@ -112,8 +112,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
         ),
       );
 
-      print(response.data);
-
       // Correctly decode the response as a list of maps
       List<Map<String, dynamic>> result =
           List<Map<String, dynamic>>.from(response.data);
@@ -194,12 +192,11 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
           },
         ),
       );
-      print(response.data);
 
       // Directly pass response.data to TaskModel.fromJson
       return TaskModel.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
-      print('error is $e');
+   
       throw ServerException(e.toString());
     }
   }

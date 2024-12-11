@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
+import 'package:task_track_app/analytics_service.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
 import 'package:task_track_app/core/utils/date_format.dart';
@@ -137,6 +138,7 @@ class _CommentsPageState extends State<CommentsPage> {
             } else if (state is CommentActionLoadState) {
               LoadingDialog.show(context);
             } else if (state is CommentSuccessState) {
+              AnalyticsService().commentTask().then((value) => debugPrint('comment task event added to firebase'));
               LoadingDialog.dismiss(context);
               Navigator.push(
                 context,

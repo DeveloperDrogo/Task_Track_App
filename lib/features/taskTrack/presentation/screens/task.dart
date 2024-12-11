@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
+import 'package:task_track_app/analytics_service.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/constant/constant.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
@@ -162,12 +163,22 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                 taskName: state.taskName,
                 projectId: state.projectId,
               );
+
+              AnalyticsService().progressChanger().then(
+                    (value) =>
+                        debugPrint('progress change event added to firebase'),
+                  );
               Navigator.pushAndRemoveUntil(
                 context,
                 TaskTrackPage.route(),
                 (route) => false,
               );
             } else if (state is DeleteTaskSuccessState) {
+              AnalyticsService().deleteTask().then(
+                    (value) =>
+                        debugPrint('delete task event added to firebase'),
+                  );
+
               Navigator.pushAndRemoveUntil(
                 context,
                 TaskTrackPage.route(),

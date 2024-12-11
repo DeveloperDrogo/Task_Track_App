@@ -6,6 +6,7 @@ import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task_track_app/analytics_service.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/constant/constant.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
@@ -82,6 +83,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         child: SubmitButton(
             onpressed: () {
               if (_formKey.currentState!.validate()) {
+               
                 if (scheduleDate != null && scheduleTime != null) {
                   context.read<TaskBloc>().add(
                         AddTaskEvent(
@@ -137,6 +139,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
             LoadingDialog.show(context);
           } else if (state is TaskSuccessActionState) {
              LoadingDialog.dismiss(context);
+            AnalyticsService().addTask().then((value) => debugPrint('task event added to firebase'));
             showAwesomeDialog(
               context: context,
               type: Constant.success,

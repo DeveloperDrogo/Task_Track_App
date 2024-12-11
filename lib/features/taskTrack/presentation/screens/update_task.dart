@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
+import 'package:task_track_app/analytics_service.dart';
 import 'package:task_track_app/core/common/widget/loader.dart';
 import 'package:task_track_app/core/constant/constant.dart';
 import 'package:task_track_app/core/utils/show_dialog.dart';
@@ -111,6 +112,7 @@ class _UpdateTaskState extends State<UpdateTask> {
             LoadingDialog.show(context);
           } else if (state is TaskSuccessActionState) {
             LoadingDialog.dismiss(context);
+            AnalyticsService().editTask().then((value) => debugPrint('edit event added to firebase'),);
             showAwesomeDialog(
               context: context,
               type: Constant.success,
@@ -179,7 +181,7 @@ class _UpdateTaskState extends State<UpdateTask> {
               priorityName = 'Low';
             }
 
-            print(state.taskModel.labels);
+            
 
             return WillPopScope(
               onWillPop: () async {
