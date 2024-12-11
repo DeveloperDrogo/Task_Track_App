@@ -5,7 +5,7 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="21"
+8        android:minSdkVersion="23"
 9        android:targetSdkVersion="34" />
 10    <!--
 11         The INTERNET permission is required for development. Specifically,
@@ -33,292 +33,296 @@
 21    <uses-permission android:name="android.permission.VIBRATE" />
 21-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:12:5-66
 21-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:12:22-63
-22    <uses-permission
-22-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:10:5-12:38
-23        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
-23-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:11:9-77
-24        android:maxSdkVersion="22" />
-24-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:12:9-35
-25
-26    <permission
-26-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
-27        android:name="com.example.task_track_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-27-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
-28        android:protectionLevel="signature" />
-28-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
-29
-30    <uses-permission android:name="com.example.task_track_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
-30-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
-30-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
-31    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
-32    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
-33    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
-34    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
-35    <!-- for Samsung -->
-36    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-36-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
-36-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
-37    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
-37-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
-37-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
-38    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-38-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
-38-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
-39    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
-39-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
-39-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
-40    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
-40-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
-40-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
-41    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
-41-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
-41-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
-42    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
-42-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
-42-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
-43    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
-43-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
-43-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
-44    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
-44-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
-44-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
-45    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
-45-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
-45-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
-46    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
-46-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
-46-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
-47    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
-47-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
-47-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
-48    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
-48-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
-48-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
-49    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
-49-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
-49-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
-50    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
-50-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
-50-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
-51    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-51-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
-51-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
-52
-53    <application
-54        android:name="android.app.Application"
-55        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-55-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
-56        android:debuggable="true"
-57        android:icon="@mipmap/ic_launcher"
-58        android:label="task_track_app" >
-59        <activity
-60            android:name="com.example.task_track_app.MainActivity"
-61            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-62            android:exported="true"
-63            android:hardwareAccelerated="true"
-64            android:launchMode="singleTop"
-65            android:theme="@style/LaunchTheme"
-66            android:windowSoftInputMode="adjustResize" >
-67
-68            <!--
-69                 Specifies an Android theme to apply to this Activity as soon as
-70                 the Android process has started. This theme is visible to the user
-71                 while the Flutter UI initializes. After that, this theme continues
-72                 to determine the Window background behind the Flutter UI.
-73            -->
-74            <meta-data
-75                android:name="io.flutter.embedding.android.NormalTheme"
-76                android:resource="@style/NormalTheme" />
-77
-78            <intent-filter>
-79                <action android:name="android.intent.action.MAIN" />
-80
-81                <category android:name="android.intent.category.LAUNCHER" />
-82            </intent-filter>
-83        </activity>
-84        <!--
-85             Don't delete the meta-data below.
-86             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-87        -->
-88        <meta-data
-89            android:name="flutterEmbedding"
-90            android:value="2" />
-91
-92        <receiver
-92-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-17:39
-93            android:name="me.carda.awesome_notifications.DartNotificationActionReceiver"
-93-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-89
-94            android:exported="true" />
-94-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-36
-95        <receiver
-95-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-20:39
-96            android:name="me.carda.awesome_notifications.DartDismissedNotificationReceiver"
-96-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-92
-97            android:exported="true" />
-97-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-36
-98        <receiver
-98-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:9-23:39
-99            android:name="me.carda.awesome_notifications.DartScheduledNotificationReceiver"
-99-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-92
-100            android:exported="true" />
-100-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-36
-101        <receiver
-101-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:9-38:20
-102            android:name="me.carda.awesome_notifications.DartRefreshSchedulesReceiver"
-102-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-87
-103            android:enabled="true"
-103-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-35
-104            android:exported="true" >
-104-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-36
-105            <intent-filter>
-105-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-37:29
-106                <category android:name="android.intent.category.DEFAULT" />
-106-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-76
-106-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:27-73
-107
-108                <action android:name="android.intent.action.BOOT_COMPLETED" />
-108-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:31:17-79
-108-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:31:25-76
-109                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
-109-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:32:17-86
-109-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:32:25-83
-110                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-110-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-84
-110-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-81
-111                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-111-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:34:17-82
-111-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:34:25-79
-112                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-112-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:35:17-82
-112-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:35:25-79
-113                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
-113-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:36:17-107
-113-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:36:25-104
-114            </intent-filter>
-115        </receiver>
-116
-117        <service
-117-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:40:9-43:72
-118            android:name="me.carda.awesome_notifications.DartBackgroundService"
-118-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:41:13-80
-119            android:exported="false"
-119-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:42:13-37
-120            android:permission="android.permission.BIND_JOB_SERVICE" />
-120-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:43:13-69
-121        <service
-121-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:44:9-49:43
-122            android:name="me.carda.awesome_notifications.core.services.ForegroundService"
-122-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-90
-123            android:enabled="true"
-123-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-35
-124            android:exported="false"
-124-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:47:13-37
-125            android:foregroundServiceType="phoneCall"
-125-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:48:13-54
-126            android:stopWithTask="true" />
-126-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:49:13-40
-127        <service
-127-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:21:9-28:19
-128            android:name="me.carda.awesome_notifications.core.managers.StatusBarManager"
-128-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:22:13-89
-129            android:exported="true"
-129-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:23:13-36
-130            android:label="My Notification Listener Service" >
-130-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:24:13-61
-131            <intent-filter>
-131-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:25:13-27:29
-132                <action android:name="android.service.notification.NotificationListenerService" />
-132-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:26:17-99
-132-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:26:25-96
-133            </intent-filter>
-134        </service>
-135        <service
-135-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
-136            android:name="androidx.room.MultiInstanceInvalidationService"
-136-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
-137            android:directBootAware="true"
-137-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
-138            android:exported="false" />
-138-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
-139
-140        <uses-library
-140-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-141            android:name="androidx.window.extensions"
-141-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-142            android:required="false" />
-142-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-143        <uses-library
-143-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-144            android:name="androidx.window.sidecar"
-144-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-145            android:required="false" />
-145-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-146
-147        <provider
-147-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-148            android:name="androidx.startup.InitializationProvider"
-148-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-149            android:authorities="com.example.task_track_app.androidx-startup"
-149-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-150            android:exported="false" >
-150-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-151            <meta-data
-151-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-152                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-152-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-153                android:value="androidx.startup" />
-153-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-154            <meta-data
-154-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/parrophinssolutions/.gradle/caches/transforms-3/34e3313412f6bb2343705c93422b49a8/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
-155                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-155-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/parrophinssolutions/.gradle/caches/transforms-3/34e3313412f6bb2343705c93422b49a8/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
-156                android:value="androidx.startup" />
-156-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/parrophinssolutions/.gradle/caches/transforms-3/34e3313412f6bb2343705c93422b49a8/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
-157            <meta-data
-157-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-158                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-158-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-159                android:value="androidx.startup" />
-159-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-160        </provider>
-161
-162        <receiver
-162-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-163            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-163-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-164            android:directBootAware="false"
-164-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-165            android:enabled="true"
-165-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-166            android:exported="true"
-166-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-167            android:permission="android.permission.DUMP" >
-167-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-168            <intent-filter>
-168-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-169                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-169-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-169-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-170            </intent-filter>
-171            <intent-filter>
-171-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-172                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-172-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-172-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-173            </intent-filter>
-174            <intent-filter>
-174-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-175                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-175-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-175-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-176            </intent-filter>
-177            <intent-filter>
-177-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-178                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-178-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-178-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-179            </intent-filter>
-180        </receiver>
-181    </application>
-182
-183</manifest>
+22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+22-->[:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-79
+22-->[:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-76
+23    <uses-permission
+23-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:10:5-12:38
+24        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+24-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:11:9-77
+25        android:maxSdkVersion="22" />
+25-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:12:9-35
+26
+27    <permission
+27-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+28        android:name="com.example.task_track_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+28-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+29        android:protectionLevel="signature" />
+29-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+30
+31    <uses-permission android:name="com.example.task_track_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
+31-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+31-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+32    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+33    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+34    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+35    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+36    <!-- for Samsung -->
+37    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+38    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+39    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+40    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+41    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+42    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+43    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+44    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+45    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+46    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+46-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+46-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+47    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+47-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+47-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+48    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+48-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+48-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+49    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+49-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+49-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+50    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+50-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+50-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+51    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+51-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+51-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+52    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+52-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+52-->[me.leolin:ShortcutBadger:1.1.22] /Users/parrophinssolutions/.gradle/caches/transforms-3/b0389fa7cbcb973eb70356eb385c55ee/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+53
+54    <application
+55        android:name="android.app.Application"
+56        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+56-->[androidx.core:core:1.9.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/c2aff38445ebad8ddeaa989ecf50f56e/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+57        android:debuggable="true"
+58        android:extractNativeLibs="false"
+59        android:icon="@mipmap/ic_launcher"
+60        android:label="task_track_app" >
+61        <activity
+62            android:name="com.example.task_track_app.MainActivity"
+63            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+64            android:exported="true"
+65            android:hardwareAccelerated="true"
+66            android:launchMode="singleTop"
+67            android:theme="@style/LaunchTheme"
+68            android:windowSoftInputMode="adjustResize" >
+69
+70            <!--
+71                 Specifies an Android theme to apply to this Activity as soon as
+72                 the Android process has started. This theme is visible to the user
+73                 while the Flutter UI initializes. After that, this theme continues
+74                 to determine the Window background behind the Flutter UI.
+75            -->
+76            <meta-data
+77                android:name="io.flutter.embedding.android.NormalTheme"
+78                android:resource="@style/NormalTheme" />
+79
+80            <intent-filter>
+81                <action android:name="android.intent.action.MAIN" />
+82
+83                <category android:name="android.intent.category.LAUNCHER" />
+84            </intent-filter>
+85        </activity>
+86        <!--
+87             Don't delete the meta-data below.
+88             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+89        -->
+90        <meta-data
+91            android:name="flutterEmbedding"
+92            android:value="2" />
+93
+94        <receiver
+94-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-17:39
+95            android:name="me.carda.awesome_notifications.DartNotificationActionReceiver"
+95-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-89
+96            android:exported="true" />
+96-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-36
+97        <receiver
+97-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-20:39
+98            android:name="me.carda.awesome_notifications.DartDismissedNotificationReceiver"
+98-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-92
+99            android:exported="true" />
+99-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-36
+100        <receiver
+100-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:9-23:39
+101            android:name="me.carda.awesome_notifications.DartScheduledNotificationReceiver"
+101-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-92
+102            android:exported="true" />
+102-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-36
+103        <receiver
+103-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:9-38:20
+104            android:name="me.carda.awesome_notifications.DartRefreshSchedulesReceiver"
+104-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-87
+105            android:enabled="true"
+105-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-35
+106            android:exported="true" >
+106-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-36
+107            <intent-filter>
+107-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-37:29
+108                <category android:name="android.intent.category.DEFAULT" />
+108-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-76
+108-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:29:27-73
+109
+110                <action android:name="android.intent.action.BOOT_COMPLETED" />
+110-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:31:17-79
+110-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:31:25-76
+111                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+111-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:32:17-86
+111-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:32:25-83
+112                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+112-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-84
+112-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-81
+113                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+113-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:34:17-82
+113-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:34:25-79
+114                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+114-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:35:17-82
+114-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:35:25-79
+115                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+115-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:36:17-107
+115-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:36:25-104
+116            </intent-filter>
+117        </receiver>
+118
+119        <service
+119-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:40:9-43:72
+120            android:name="me.carda.awesome_notifications.DartBackgroundService"
+120-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:41:13-80
+121            android:exported="false"
+121-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:42:13-37
+122            android:permission="android.permission.BIND_JOB_SERVICE" />
+122-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:43:13-69
+123        <service
+123-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:44:9-49:43
+124            android:name="me.carda.awesome_notifications.core.services.ForegroundService"
+124-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-90
+125            android:enabled="true"
+125-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-35
+126            android:exported="false"
+126-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:47:13-37
+127            android:foregroundServiceType="phoneCall"
+127-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:48:13-54
+128            android:stopWithTask="true" />
+128-->[:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:49:13-40
+129        <service
+129-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:21:9-28:19
+130            android:name="me.carda.awesome_notifications.core.managers.StatusBarManager"
+130-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:22:13-89
+131            android:exported="true"
+131-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:23:13-36
+132            android:label="My Notification Listener Service" >
+132-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:24:13-61
+133            <intent-filter>
+133-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:25:13-27:29
+134                <action android:name="android.service.notification.NotificationListenerService" />
+134-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:26:17-99
+134-->[me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:26:25-96
+135            </intent-filter>
+136        </service>
+137        <service
+137-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
+138            android:name="androidx.room.MultiInstanceInvalidationService"
+138-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
+139            android:directBootAware="true"
+139-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
+140            android:exported="false" />
+140-->[androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
+141
+142        <uses-library
+142-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+143            android:name="androidx.window.extensions"
+143-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+144            android:required="false" />
+144-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+145        <uses-library
+145-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+146            android:name="androidx.window.sidecar"
+146-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+147            android:required="false" />
+147-->[androidx.window:window:1.0.0-beta04] /Users/parrophinssolutions/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+148
+149        <provider
+149-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+150            android:name="androidx.startup.InitializationProvider"
+150-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+151            android:authorities="com.example.task_track_app.androidx-startup"
+151-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+152            android:exported="false" >
+152-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+153            <meta-data
+153-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+154                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+154-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+155                android:value="androidx.startup" />
+155-->[androidx.emoji2:emoji2:1.2.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e04bc3769bedd8dd6f8ca688986b0355/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+156            <meta-data
+156-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/parrophinssolutions/.gradle/caches/transforms-3/34e3313412f6bb2343705c93422b49a8/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+157                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+157-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/parrophinssolutions/.gradle/caches/transforms-3/34e3313412f6bb2343705c93422b49a8/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+158                android:value="androidx.startup" />
+158-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/parrophinssolutions/.gradle/caches/transforms-3/34e3313412f6bb2343705c93422b49a8/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+159            <meta-data
+159-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+160                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+160-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+161                android:value="androidx.startup" />
+161-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+162        </provider>
+163
+164        <receiver
+164-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+165            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+165-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+166            android:directBootAware="false"
+166-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+167            android:enabled="true"
+167-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+168            android:exported="true"
+168-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+169            android:permission="android.permission.DUMP" >
+169-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+170            <intent-filter>
+170-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+171                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+171-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+171-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+172            </intent-filter>
+173            <intent-filter>
+173-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+174                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+174-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+174-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+175            </intent-filter>
+176            <intent-filter>
+176-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+177                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+177-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+177-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+178            </intent-filter>
+179            <intent-filter>
+179-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+180                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+180-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+180-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/635b1770925726da461e843c0a3c6641/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+181            </intent-filter>
+182        </receiver>
+183    </application>
+184
+185</manifest>

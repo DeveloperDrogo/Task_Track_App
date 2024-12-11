@@ -10,6 +10,7 @@ import 'package:task_track_app/core/constant/constant.dart';
 import 'package:task_track_app/core/theme/app_pallet.dart';
 import 'package:task_track_app/core/utils/show_dialog.dart';
 import 'package:task_track_app/core/utils/show_snackbar.dart';
+import 'package:task_track_app/features/comment/presentation/screens/comments.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/add_task.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/update_task.dart';
@@ -128,8 +129,8 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
         ],
       ),
       body: WillPopScope(
-        onWillPop: () async{
-           showAwesomeDialog(
+        onWillPop: () async {
+          showAwesomeDialog(
             context: context,
             type: Constant.exit,
             title: 'Exit Confirmation',
@@ -156,7 +157,7 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                 projectId: state.projectId,
                 taskId: state.taskId,
               );
-      
+
               NotificationManager.moveNotification(
                 taskName: state.taskName,
                 projectId: state.projectId,
@@ -203,7 +204,8 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                           child: Container(
                             height: 50,
                             decoration: BoxDecoration(
-                              border: Border.all(width: 0.5, color: Colors.grey),
+                              border:
+                                  Border.all(width: 0.5, color: Colors.grey),
                               borderRadius: BorderRadius.circular(10),
                               // color: Theme.of(context).cardTheme.color,
                             ),
@@ -232,11 +234,11 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                         filterDate = DateFormat('yyyy-MM-dd').format(date);
                       });
                     }),
-      
+
                     const SizedBox(
                       height: 16,
                     ),
-      
+
                     state.taskData
                             .where((task) =>
                                 (_searchController.text.isEmpty ||
@@ -249,7 +251,8 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                                     task.projectId ==
                                         selectedProject.toString()) &&
                                 (selectedPriority == null ||
-                                    task.priority == selectedPriority.toString()))
+                                    task.priority ==
+                                        selectedPriority.toString()))
                             .isEmpty
                         ? const EmptyTask()
                         : Expanded(
@@ -275,13 +278,23 @@ class _TaskTrackPageState extends State<TaskTrackPage> {
                                       .shrink(); // Hide if not matching
                                 }
                                 return MyTaskList(
+                                  oncommentPress: (taskId, taskName, dueDate) {
+                                    Navigator.push(
+                                        context,
+                                        CommentsPage.route(
+                                          taskId: taskId,
+                                          taskName: taskName,
+                                          dueDate: dueDate,
+                                        ));
+                                  },
                                   taskData: task,
                                   onCancellPress: (taskId) {
                                     context
                                         .read<TaskBloc>()
                                         .add(DeleteTaskEvent(taskId: taskId));
                                   },
-                                  onMoveTaskPress: (taskId, projectId, taskName) {
+                                  onMoveTaskPress:
+                                      (taskId, projectId, taskName) {
                                     context.read<TaskBloc>().add(
                                           MoveTaskEvent(
                                             taskId: taskId,

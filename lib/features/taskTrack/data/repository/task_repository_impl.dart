@@ -1,6 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:task_track_app/core/error/exception.dart';
 import 'package:task_track_app/core/error/failure.dart';
+import 'package:task_track_app/core/network/connection_checker.dart';
+import 'package:task_track_app/features/taskTrack/data/datasource/task_local_data_source.dart';
 import 'package:task_track_app/features/taskTrack/data/datasource/task_remote_data_source.dart';
 import 'package:task_track_app/features/taskTrack/data/model/task_model.dart';
 import 'package:task_track_app/features/taskTrack/domain/entities/label_data.dart';
@@ -9,7 +11,14 @@ import 'package:task_track_app/features/taskTrack/domain/repository/task_reposit
 
 class TaskRepositoryImpl implements TaskRepository {
   final TaskRemoteDataSource taskRemoteDataSource;
-  TaskRepositoryImpl({required this.taskRemoteDataSource});
+  final TaskLocalDataSource taskLocalDataSource;
+  final ConnectionChecker connectionChecker;
+
+  TaskRepositoryImpl(
+      {required this.taskRemoteDataSource,
+      required this.taskLocalDataSource,
+      required this.connectionChecker});
+
   @override
   Future<Either<Failure, List<LabelsData>>> getAllLabels() async {
     try {
@@ -44,9 +53,15 @@ class TaskRepositoryImpl implements TaskRepository {
   @override
   Future<Either<Failure, List<TaskData>>> getAllTask() async {
     try {
-      final result = await taskRemoteDataSource.getAllTask();
-      return right(result);
+      if (!await (connectionChecker.isConnected)) {
+        final tasks = taskLocalDataSource.loadTasks();
+        return right(tasks);
+      }
+      final tasks = await taskRemoteDataSource.getAllTask();
+      taskLocalDataSource.uploadLocalTask(tasks: tasks);
+      return right(tasks);
     } on ServerException catch (e) {
+      print('error is $e');
       return left(
         Failure(
           e.toString(),
@@ -86,9 +101,11 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Either<Failure, TaskModel>> getTaskDetails({required String taskId}) async{
+  Future<Either<Failure, TaskModel>> getTaskDetails(
+      {required String taskId}) async {
     try {
-      final result = await taskRemoteDataSource.getTaskDetailsForTaskId(taskId: taskId);
+      final result =
+          await taskRemoteDataSource.getTaskDetailsForTaskId(taskId: taskId);
       return right(result);
     } on ServerException catch (e) {
       return left(
@@ -98,10 +115,15 @@ class TaskRepositoryImpl implements TaskRepository {
       );
     }
   }
-  
+
   @override
-  Future<Either<Failure, bool>> updateTask({required String taskName, required String des, required String dueDate, required String priority, required String taskId}) async{
-     try {
+  Future<Either<Failure, bool>> updateTask(
+      {required String taskName,
+      required String des,
+      required String dueDate,
+      required String priority,
+      required String taskId}) async {
+    try {
       final result = await taskRemoteDataSource.updateTask(
         taskName: taskName,
         des: des,

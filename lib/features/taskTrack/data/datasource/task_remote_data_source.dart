@@ -112,6 +112,8 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
         ),
       );
 
+      print(response.data);
+
       // Correctly decode the response as a list of maps
       List<Map<String, dynamic>> result =
           List<Map<String, dynamic>>.from(response.data);

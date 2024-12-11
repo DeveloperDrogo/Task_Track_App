@@ -37,8 +37,10 @@ INJECTED from /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/android
 MERGED from /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/android/app/src/main/AndroidManifest.xml:1:1-35:12
 MERGED from [:shared_preferences_android] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-52:12
+MERGED from [:isar_flutter_libs] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/isar_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-10:12
 MERGED from [:path_provider_android] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:rive_common] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:2:1-31:12
 MERGED from [com.google.android.material:material:1.11.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/a27c6c352a4ad9af46fa97f38b5b95d2/transformed/material-1.11.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.room:room-runtime:2.5.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/e2498991e22bb740a57c1ad90873250d/transformed/room-runtime-2.5.0/AndroidManifest.xml:17:1-31:12
@@ -123,10 +125,14 @@ MERGED from [:shared_preferences_android] /Users/parrophinssolutions/Documents/G
 MERGED from [:shared_preferences_android] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:isar_flutter_libs] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/isar_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:isar_flutter_libs] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/isar_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
 MERGED from [:path_provider_android] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:rive_common] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:rive_common] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/rive_common/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:5:5-7:41
 MERGED from [me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.material:material:1.11.0] /Users/parrophinssolutions/.gradle/caches/transforms-3/a27c6c352a4ad9af46fa97f38b5b95d2/transformed/material-1.11.0/AndroidManifest.xml:20:5-44
@@ -337,6 +343,10 @@ MERGED from [me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/c
 		ADDED from [:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:48:13-54
 	android:name
 		ADDED from [:awesome_notifications] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/awesome_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-90
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from [:connectivity_plus] /Users/parrophinssolutions/Documents/GitHub/Task_Track_App/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-76
 uses-permission#android.permission.BIND_NOTIFICATION_LISTENER_SERVICE
 ADDED from [me.carda:AndroidAwnCore:0.8.3] /Users/parrophinssolutions/.gradle/caches/transforms-3/fa5a06fc307be9afccc235920c46243e/transformed/jetified-AndroidAwnCore-0.8.3/AndroidManifest.xml:10:5-12:38
 	android:maxSdkVersion

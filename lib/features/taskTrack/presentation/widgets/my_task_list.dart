@@ -16,14 +16,15 @@ class MyTaskList extends StatelessWidget {
   final Function(String) onCancellPress;
   final Function(String) onEditPress;
   final Function(String, String, String) onMoveTaskPress;
+  final Function(String, String, String) oncommentPress;
   final TaskData taskData;
-  const MyTaskList({
-    super.key,
-    required this.taskData,
-    required this.onCancellPress,
-    required this.onMoveTaskPress,
-    required this.onEditPress,
-  });
+  const MyTaskList(
+      {super.key,
+      required this.taskData,
+      required this.onCancellPress,
+      required this.onMoveTaskPress,
+      required this.onEditPress,
+      required this.oncommentPress});
 
   @override
   Widget build(BuildContext context) {
@@ -372,7 +373,13 @@ class MyTaskList extends StatelessWidget {
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          oncommentPress(
+                            taskData.taskID,
+                            taskData.taskName,
+                            taskData.dueDate,
+                          );
+                        },
                         icon: const Icon(
                           IconlyBroken.chat,
                         ),

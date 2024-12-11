@@ -136,6 +136,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
           } else if (state is TaskActionLoadeState) {
             LoadingDialog.show(context);
           } else if (state is TaskSuccessActionState) {
+             LoadingDialog.dismiss(context);
             showAwesomeDialog(
               context: context,
               type: Constant.success,
@@ -173,6 +174,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               },
             );
           } else if (state is TaskFailedActionState) {
+             LoadingDialog.dismiss(context);
             showAwesomeDialog(
               context: context,
               type: Constant.failure,

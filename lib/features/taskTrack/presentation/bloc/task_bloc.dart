@@ -146,37 +146,18 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   FutureOr<void> _getSelectedTaskInfoEvent(
       GetSelectedTaskInfoEvent event, Emitter<TaskState> emit) async {
     emit(TaskLoadState());
-    List<LabelsData> labelsData = [];
-    TaskModel? taskInfo;
-
-    final labels = await _getAllLabelsUseCase(NoParms());
-
     final task = await _getSelectedTaskUseCase(
       GetSelectedTaskUseCaseParms(taskId: event.taskId),
     );
 
-    labels.fold(
-      (l) => emit(
-        TaskErrorState(errorMessage: l.message),
-      ),
-      (r) {
-        labelsData = r;
-      },
-    );
-
     task.fold(
-        (l) => emit(
-              TaskErrorState(
-                errorMessage: l.message,
-              ),
-            ), (r) {
-      taskInfo = r;
-    });
-
-    emit(
-      GetTaskInfoState(
-        labels: labelsData,
-        taskModel: taskInfo!,
+      (l) => emit(
+        TaskErrorState(
+          errorMessage: l.message,
+        ),
+      ),
+      (r) => emit(
+        GetTaskInfoState(taskModel: r),
       ),
     );
   }

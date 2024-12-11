@@ -7,6 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:task_track_app/core/navigation/app_routes.dart';
 import 'package:task_track_app/core/storage/shared_prefs.dart';
 import 'package:task_track_app/core/theme/adaptive_theme.dart';
+import 'package:task_track_app/features/comment/presentation/bloc/comment_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/screens/task.dart';
 import 'package:task_track_app/init_dependencies.dart';
@@ -23,6 +24,7 @@ extension StringExtension on String {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await dotenv.load(fileName: ".env");
   await NotificationService.initializeNotification();
   await initDependencies();
@@ -39,6 +41,10 @@ void main() async {
        BlocProvider(
         create: (_) => serviceLocator<TaskBloc>(),
       ),
+        BlocProvider(
+        create: (_) => serviceLocator<CommentBloc>(),
+      ),
+      
     ],
     child: MyApp(
       savedThemeMode: savedThemeMode,
