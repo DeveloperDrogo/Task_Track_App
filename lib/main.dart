@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:task_track_app/core/navigation/app_routes.dart';
-import 'package:task_track_app/core/storage/shared_prefs.dart';
 import 'package:task_track_app/core/theme/adaptive_theme.dart';
 import 'package:task_track_app/features/comment/presentation/bloc/comment_bloc.dart';
 import 'package:task_track_app/features/taskTrack/presentation/bloc/task_bloc.dart';
@@ -32,7 +31,6 @@ void main() async {
   await dotenv.load(fileName: ".env");
   await NotificationService.initializeNotification();
   await initDependencies();
-  await SharedPrefs().init();
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
@@ -79,7 +77,7 @@ class _MyAppState extends State<MyApp> {
         dark: AdaptiveThemeConfig.darkTheme,
         initial: widget.savedThemeMode ?? AdaptiveThemeConfig.initialThemeMode,
         builder: (theme, darkTheme) => MaterialApp(
-            title: SharedPrefs().institutionName,
+            title: 'Task Vision',
             routes: AppRoutes.routes,
             theme: theme,
             debugShowCheckedModeBanner: false,
