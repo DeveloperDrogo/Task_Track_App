@@ -1,4 +1,4 @@
-# Task Vision: Redefining Task Management 📝  
+# Task Vision  
 
 **Task Vision** is a robust and feature-packed task management app built with Flutter, BLoC, and Clean Architecture. Powered by the Todolist API, it is designed to streamline productivity with ease.  
 
@@ -24,5 +24,5 @@
 
 ## Getting Started  
 1. Clone this repository:  
-   ```bash
-   git clone https://github.com/yourusername/task-vision.git
+   ```bash 
+   git clone https://github.com/DeveloperDrogo/Task_Track_App
