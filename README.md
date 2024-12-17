@@ -22,7 +22,8 @@
 - Local Storage for offline reliability.  
 - Firebase Analytics for tracking and insights.  
 
-## Getting Started  
-1. Clone this repository:  
-   ```bash 
-   git clone https://github.com/DeveloperDrogo/Task_Track_App
+## Flutter Version  
+This project was built using **Flutter 3.13.6**. Ensure you have the correct version installed:  
+```bash
+flutter --version
+git clone https://github.com/DeveloperDrogo/Task_Track_App
