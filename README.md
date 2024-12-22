@@ -23,7 +23,6 @@
 - Firebase Analytics for tracking and insights.  
 
 ## Flutter Version  
-This project was built using **Flutter 3.13.6**. Ensure you have the correct version installed:  
+This project was built using **Flutter 3.13.6**.  
 ```bash
-flutter --version
 git clone https://github.com/DeveloperDrogo/Task_Track_App
